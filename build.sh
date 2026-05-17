@@ -36,20 +36,66 @@ for f in "$SRC"/*; do
   echo "$iso|$out" >> "$tmp"
 done
 
-# Sort chronologically, emit manifest.json
+# Sort chronologically, then fetch weather and emit manifest.json
 sort "$tmp" > "$tmp.sorted"
 
-{
-  echo "["
-  first=1
-  while IFS='|' read -r iso file; do
-    [ $first -eq 1 ] && first=0 || echo ","
-    printf '  {"date": "%s", "file": "%s"}' "$iso" "$file"
-  done < "$tmp.sorted"
-  echo ""
-  echo "]"
-} > manifest.json
+python3 - "$tmp.sorted" <<'PY'
+import json, os, sys, urllib.request, datetime
+
+entries = []
+with open(sys.argv[1]) as f:
+    for line in f:
+        iso, file = line.rstrip('\n').split('|', 1)
+        entries.append({'date': iso, 'file': file})
+
+captions = {}
+if os.path.exists('captions.json'):
+    try:
+        with open('captions.json') as f:
+            captions = json.load(f) or {}
+    except Exception as e:
+        print(f'warning: could not parse captions.json ({e})', file=sys.stderr)
+
+# Boston, fetch hourly weather across the photo date range in one request.
+start = entries[0]['date'][:10]
+end = entries[-1]['date'][:10]
+url = (
+    'https://archive-api.open-meteo.com/v1/archive'
+    f'?latitude=42.36&longitude=-71.06'
+    f'&start_date={start}&end_date={end}'
+    '&hourly=temperature_2m,weather_code'
+    '&temperature_unit=fahrenheit'
+    '&timezone=America/New_York'
+)
+try:
+    with urllib.request.urlopen(url, timeout=30) as r:
+        data = json.load(r)
+    times = data['hourly']['time']
+    temps = data['hourly']['temperature_2m']
+    codes = data['hourly']['weather_code']
+    index = {t: i for i, t in enumerate(times)}
+except Exception as e:
+    print(f'warning: weather fetch failed ({e}); writing manifest without weather', file=sys.stderr)
+    index = {}
+    temps = codes = []
+
+for e in entries:
+    dt = datetime.datetime.fromisoformat(e['date'])
+    key = dt.strftime('%Y-%m-%dT%H:00')
+    i = index.get(key)
+    e['temp_f'] = temps[i] if i is not None else None
+    e['code'] = codes[i] if i is not None else None
+    cap = captions.get(e['file'])
+    if cap:
+        e['caption'] = cap
+
+missing = [f for f in captions if not any(e['file'] == f for e in entries)]
+if missing:
+    print(f'warning: captions.json refers to unknown files: {missing}', file=sys.stderr)
+
+with open('manifest.json', 'w') as f:
+    json.dump(entries, f, indent=2)
+print(f'Wrote manifest.json with {len(entries)} photos')
+PY
 
 rm "$tmp" "$tmp.sorted"
-count=$(grep -c '"file"' manifest.json)
-echo "Wrote manifest.json with $count photos"

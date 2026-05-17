@@ -59,15 +59,18 @@
     padding: 14px 8px 4px;
     color: var(--muted);
     font-size: 0.85rem;
+    line-height: 1.5;
     font-variant-numeric: tabular-nums;
   }
+  .weather { color: #999; font-size: 0.8rem; }
+  .note { color: var(--fg); font-style: italic; font-size: 0.9rem; margin-top: 6px; display: block; }
   .counter { color: #aaa; font-size: 0.75rem; margin-top: 2px; }
 
   .divider { text-align: center; color: #ccc; margin: 48px 0 24px; font-size: 0.75rem; letter-spacing: 0.2em; }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--gap);
     max-width: 900px;
     margin: 0 auto 80px;
@@ -99,7 +102,7 @@
 <body>
   <header>
     <h1 id="title">Photos on the Charles</h1>
-    <p>One photo, every time I walk by.</p>
+    <!--<p>One photo, every time I walk by.</p>-->
   </header>
 
   <section class="carousel" aria-label="Photo slideshow">
@@ -150,6 +153,24 @@
     return date + ' · ' + time;
   }
 
+  const WMO = {
+    0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
+    45: 'Fog', 48: 'Freezing fog',
+    51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
+    56: 'Freezing drizzle', 57: 'Heavy freezing drizzle',
+    61: 'Light rain', 63: 'Rain', 65: 'Heavy rain',
+    66: 'Freezing rain', 67: 'Heavy freezing rain',
+    71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains',
+    80: 'Light rain showers', 81: 'Rain showers', 82: 'Heavy rain showers',
+    85: 'Light snow showers', 86: 'Snow showers',
+    95: 'Thunderstorm', 96: 'Thunderstorm w/ hail', 99: 'Severe thunderstorm',
+  };
+  function fmtWeather(p) {
+    if (p.temp_f == null) return '';
+    const cond = WMO[p.code] || '';
+    return Math.round(p.temp_f) + '°F' + (cond ? ' · ' + cond : '');
+  }
+
   let idx = 0;
   function show(i) {
     idx = (i + photos.length) % photos.length;
@@ -160,7 +181,23 @@
       const el = slides[n];
       if (!el.src) el.src = el.dataset.src;
     });
-    caption.textContent = fmtDate(photos[idx].date);
+    const p = photos[idx];
+    const weather = fmtWeather(p);
+    caption.replaceChildren();
+    caption.append(fmtDate(p.date));
+    if (weather) {
+      caption.append(document.createElement('br'));
+      const w = document.createElement('span');
+      w.className = 'weather';
+      w.textContent = weather;
+      caption.append(w);
+    }
+    if (p.caption) {
+      const n = document.createElement('span');
+      n.className = 'note';
+      n.textContent = p.caption;
+      caption.append(n);
+    }
     counter.textContent = (idx + 1) + ' / ' + photos.length;
   }
 
