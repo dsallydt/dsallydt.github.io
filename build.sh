@@ -63,7 +63,12 @@ if os.path.exists('manifest.json'):
         with open('manifest.json') as f:
             for e in json.load(f):
                 if e.get('temp_f') is not None:
-                    prev_weather[e['file']] = (e.get('temp_f'), e.get('code'))
+                    prev_weather[e['file']] = {
+                        'temp_f': e.get('temp_f'),
+                        'code': e.get('code'),
+                        'wind_mph': e.get('wind_mph'),
+                        'wind_dir': e.get('wind_dir'),
+                    }
     except Exception:
         pass
 
@@ -74,8 +79,9 @@ url = (
     'https://archive-api.open-meteo.com/v1/archive'
     f'?latitude=42.36&longitude=-71.06'
     f'&start_date={start}&end_date={end}'
-    '&hourly=temperature_2m,weather_code'
+    '&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m'
     '&temperature_unit=fahrenheit'
+    '&wind_speed_unit=mph'
     '&timezone=America/New_York'
 )
 try:
@@ -87,11 +93,13 @@ try:
     times = data['hourly']['time']
     temps = data['hourly']['temperature_2m']
     codes = data['hourly']['weather_code']
+    winds = data['hourly']['wind_speed_10m']
+    wdirs = data['hourly']['wind_direction_10m']
     index = {t: i for i, t in enumerate(times)}
 except Exception as e:
     print(f'warning: weather fetch failed ({e}); keeping any existing weather data', file=sys.stderr)
     index = {}
-    temps = codes = []
+    temps = codes = winds = wdirs = []
 
 for e in entries:
     dt = datetime.datetime.fromisoformat(e['date'])
@@ -100,11 +108,19 @@ for e in entries:
     if i is not None:
         e['temp_f'] = temps[i]
         e['code'] = codes[i]
+        e['wind_mph'] = winds[i]
+        e['wind_dir'] = wdirs[i]
     elif e['file'] in prev_weather:
-        e['temp_f'], e['code'] = prev_weather[e['file']]
+        prev = prev_weather[e['file']]
+        e['temp_f'] = prev['temp_f']
+        e['code'] = prev['code']
+        e['wind_mph'] = prev['wind_mph']
+        e['wind_dir'] = prev['wind_dir']
     else:
         e['temp_f'] = None
         e['code'] = None
+        e['wind_mph'] = None
+        e['wind_dir'] = None
     cap = captions.get(e['file'])
     if cap:
         e['caption'] = cap

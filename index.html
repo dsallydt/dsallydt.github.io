@@ -165,10 +165,21 @@
     85: 'Light snow showers', 86: 'Snow showers',
     95: 'Thunderstorm', 96: 'Thunderstorm w/ hail', 99: 'Severe thunderstorm',
   };
+  const COMPASS = ['N','NE','E','SE','S','SW','W','NW'];
+  function fmtWind(mph, dir) {
+    if (mph == null) return '';
+    const speed = Math.round(mph);
+    if (speed < 1) return 'calm';
+    const point = dir == null ? '' : ' ' + COMPASS[Math.round(((dir % 360) / 45)) % 8];
+    return speed + ' mph' + point;
+  }
   function fmtWeather(p) {
     if (p.temp_f == null) return '';
-    const cond = WMO[p.code] || '';
-    return Math.round(p.temp_f) + '°F' + (cond ? ' · ' + cond : '');
+    const parts = [Math.round(p.temp_f) + '°F'];
+    if (WMO[p.code]) parts.push(WMO[p.code]);
+    const wind = fmtWind(p.wind_mph, p.wind_dir);
+    if (wind) parts.push(wind);
+    return parts.join(' · ');
   }
 
   let idx = 0;

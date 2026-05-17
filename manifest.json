@@ -3,398 +3,530 @@
     "date": "2025-10-14T22:30:14",
     "file": "IMG_6286.jpg",
     "temp_f": 55.4,
-    "code": 51
+    "code": 51,
+    "wind_mph": 3.2,
+    "wind_dir": 348
   },
   {
     "date": "2026-01-07T20:23:35",
     "file": "IMG_6823.jpg",
     "temp_f": 34.6,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.9,
+    "wind_dir": 270
   },
   {
     "date": "2026-01-10T23:57:34",
     "file": "IMG_6836.jpg",
     "temp_f": 39.9,
-    "code": 61
+    "code": 61,
+    "wind_mph": 10.9,
+    "wind_dir": 104
   },
   {
     "date": "2026-01-11T16:52:33",
     "file": "IMG_6839.jpg",
     "temp_f": 44.4,
-    "code": 1
+    "code": 1,
+    "wind_mph": 4.2,
+    "wind_dir": 284
   },
   {
     "date": "2026-01-21T19:47:28",
     "file": "IMG_6875.jpg",
     "temp_f": 24.5,
-    "code": 3
+    "code": 3,
+    "wind_mph": 9.8,
+    "wind_dir": 195
   },
   {
     "date": "2026-01-26T20:47:43",
     "file": "IMG_6899.jpg",
     "temp_f": 17.8,
-    "code": 73
+    "code": 73,
+    "wind_mph": 11.5,
+    "wind_dir": 319
   },
   {
     "date": "2026-01-27T23:41:19",
     "file": "IMG_6911.jpg",
     "temp_f": 13.9,
-    "code": 0
+    "code": 0,
+    "wind_mph": 10.4,
+    "wind_dir": 283
   },
   {
     "date": "2026-01-28T22:59:11",
     "file": "IMG_6914.jpg",
     "temp_f": 12.5,
-    "code": 3
+    "code": 3,
+    "wind_mph": 6.4,
+    "wind_dir": 290
   },
   {
     "date": "2026-02-02T22:53:12",
     "file": "IMG_6944.jpg",
     "temp_f": 21.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 9.0,
+    "wind_dir": 316
   },
   {
     "date": "2026-02-03T20:11:37",
     "file": "IMG_6948.jpg",
     "temp_f": 19.6,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.2,
+    "wind_dir": 216
   },
   {
     "date": "2026-02-06T17:36:30",
     "file": "IMG_6955.jpg",
     "temp_f": 27.9,
-    "code": 3
+    "code": 3,
+    "wind_mph": 4.2,
+    "wind_dir": 32
   },
   {
     "date": "2026-02-08T21:45:26",
     "file": "IMG_6977.jpg",
     "temp_f": 9.8,
     "code": 3,
+    "wind_mph": 15.0,
+    "wind_dir": 322,
     "caption": "Superbowl weekend, Seahawks vs Patriots. The Prudential Tower cheered the team on. (They lost.)"
   },
   {
     "date": "2026-02-10T23:55:20",
     "file": "IMG_6982.jpg",
     "temp_f": 28.7,
-    "code": 73
+    "code": 73,
+    "wind_mph": 7.3,
+    "wind_dir": 196
   },
   {
     "date": "2026-02-12T22:17:00",
     "file": "IMG_6984.jpg",
     "temp_f": 24.6,
     "code": 3,
+    "wind_mph": 10.8,
+    "wind_dir": 314,
     "caption": "Footsteps on the ice! I would not be so brave."
   },
   {
     "date": "2026-02-13T20:25:59",
     "file": "IMG_6988.jpg",
     "temp_f": 24.5,
-    "code": 0
+    "code": 0,
+    "wind_mph": 7.8,
+    "wind_dir": 252
   },
   {
     "date": "2026-02-16T22:56:57",
     "file": "IMG_7012.jpg",
     "temp_f": 25.1,
-    "code": 0
+    "code": 0,
+    "wind_mph": 2.8,
+    "wind_dir": 337
   },
   {
     "date": "2026-02-17T20:07:43",
     "file": "IMG_7016.jpg",
     "temp_f": 35.0,
-    "code": 3
+    "code": 3,
+    "wind_mph": 5.5,
+    "wind_dir": 215
   },
   {
     "date": "2026-02-18T19:01:21",
     "file": "IMG_7018.jpg",
     "temp_f": 35.7,
-    "code": 51
+    "code": 51,
+    "wind_mph": 1.9,
+    "wind_dir": 280
   },
   {
     "date": "2026-02-19T17:34:47",
     "file": "IMG_7020.jpg",
     "temp_f": 33.6,
-    "code": 3
+    "code": 3,
+    "wind_mph": 2.8,
+    "wind_dir": 85
   },
   {
     "date": "2026-02-19T23:11:06",
     "file": "IMG_7023.jpg",
     "temp_f": 30.8,
-    "code": 3
+    "code": 3,
+    "wind_mph": 6.0,
+    "wind_dir": 177
   },
   {
     "date": "2026-02-20T22:12:17",
     "file": "IMG_7025.jpg",
     "temp_f": 33.1,
-    "code": 73
+    "code": 73,
+    "wind_mph": 10.3,
+    "wind_dir": 65
   },
   {
     "date": "2026-02-21T18:05:44",
     "file": "IMG_7026.jpg",
     "temp_f": 28.0,
-    "code": 3
+    "code": 3,
+    "wind_mph": 1.1,
+    "wind_dir": 90
   },
   {
     "date": "2026-03-03T22:53:00",
     "file": "IMG_7083.jpg",
     "temp_f": 32.3,
-    "code": 61
+    "code": 61,
+    "wind_mph": 4.1,
+    "wind_dir": 125
   },
   {
     "date": "2026-03-04T23:41:26",
     "file": "IMG_7087.jpg",
     "temp_f": 34.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.7,
+    "wind_dir": 252
   },
   {
     "date": "2026-03-05T23:39:44",
     "file": "IMG_7090.jpg",
     "temp_f": 34.3,
-    "code": 71
+    "code": 71,
+    "wind_mph": 13.4,
+    "wind_dir": 53
   },
   {
     "date": "2026-03-09T22:27:52",
     "file": "IMG_7112.jpg",
     "temp_f": 48.5,
-    "code": 0
+    "code": 0,
+    "wind_mph": 10.4,
+    "wind_dir": 225
   },
   {
     "date": "2026-03-10T22:38:43",
     "file": "IMG_7113.jpg",
     "temp_f": 55.8,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.5,
+    "wind_dir": 242
   },
   {
     "date": "2026-03-11T22:30:55",
     "file": "IMG_7115.jpg",
     "temp_f": 58.1,
-    "code": 3
+    "code": 3,
+    "wind_mph": 14.4,
+    "wind_dir": 196
   },
   {
     "date": "2026-03-12T20:17:00",
     "file": "IMG_7118.jpg",
     "temp_f": 36.4,
-    "code": 71
+    "code": 71,
+    "wind_mph": 6.6,
+    "wind_dir": 255
   },
   {
     "date": "2026-03-16T22:42:15",
     "file": "IMG_7132.jpg",
     "temp_f": 58.0,
-    "code": 63
+    "code": 63,
+    "wind_mph": 20.2,
+    "wind_dir": 191
   },
   {
     "date": "2026-03-17T19:28:44",
     "file": "IMG_7136.jpg",
     "temp_f": 34.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 13.3,
+    "wind_dir": 269
   },
   {
     "date": "2026-03-26T20:37:52",
     "file": "IMG_7164.jpg",
     "temp_f": 55.8,
-    "code": 3
+    "code": 3,
+    "wind_mph": 10.9,
+    "wind_dir": 199
   },
   {
     "date": "2026-04-07T22:58:39",
     "file": "IMG_7252.jpg",
     "temp_f": 35.5,
-    "code": 0
+    "code": 0,
+    "wind_mph": 11.8,
+    "wind_dir": 296
   },
   {
     "date": "2026-04-08T21:37:48",
     "file": "IMG_7253.jpg",
     "temp_f": 34.8,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.0,
+    "wind_dir": 152
   },
   {
     "date": "2026-04-09T20:52:23",
     "file": "IMG_7254.jpg",
     "temp_f": 42.1,
-    "code": 1
+    "code": 1,
+    "wind_mph": 10.3,
+    "wind_dir": 187
   },
   {
     "date": "2026-04-10T22:35:51",
     "file": "IMG_7255.jpg",
     "temp_f": 50.6,
-    "code": 3
+    "code": 3,
+    "wind_mph": 12.2,
+    "wind_dir": 221
   },
   {
     "date": "2026-04-11T11:39:35",
     "file": "IMG_7256.jpg",
     "temp_f": 52.9,
-    "code": 0
+    "code": 0,
+    "wind_mph": 11.9,
+    "wind_dir": 326
   },
   {
     "date": "2026-04-12T23:18:48",
     "file": "IMG_7269.jpg",
     "temp_f": 44.2,
-    "code": 3
+    "code": 3,
+    "wind_mph": 7.7,
+    "wind_dir": 196
   },
   {
     "date": "2026-04-13T23:13:57",
     "file": "IMG_7273.jpg",
     "temp_f": 63.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 9.6,
+    "wind_dir": 248
   },
   {
     "date": "2026-04-14T23:45:36",
     "file": "IMG_7274.jpg",
     "temp_f": 63.0,
-    "code": 3
+    "code": 3,
+    "wind_mph": 8.6,
+    "wind_dir": 222
   },
   {
     "date": "2026-04-15T23:16:49",
     "file": "IMG_7275.jpg",
     "temp_f": 48.7,
-    "code": 3
+    "code": 3,
+    "wind_mph": 3.0,
+    "wind_dir": 45
   },
   {
     "date": "2026-04-16T21:55:02",
     "file": "IMG_7277.jpg",
     "temp_f": 55.3,
-    "code": 3
+    "code": 3,
+    "wind_mph": 3.8,
+    "wind_dir": 87
   },
   {
     "date": "2026-04-17T22:17:30",
     "file": "IMG_7278.jpg",
     "temp_f": 48.6,
-    "code": 0
+    "code": 0,
+    "wind_mph": 1.8,
+    "wind_dir": 72
   },
   {
     "date": "2026-04-19T21:55:48",
     "file": "IMG_7289.jpg",
     "temp_f": 39.1,
-    "code": 1
+    "code": 1,
+    "wind_mph": 9.7,
+    "wind_dir": 289
   },
   {
     "date": "2026-04-20T23:43:45",
     "file": "IMG_7292.jpg",
     "temp_f": 39.9,
-    "code": 3
+    "code": 3,
+    "wind_mph": 7.3,
+    "wind_dir": 2
   },
   {
     "date": "2026-04-22T00:11:11",
     "file": "IMG_7294.jpg",
     "temp_f": 37.9,
-    "code": 2
+    "code": 2,
+    "wind_mph": 7.8,
+    "wind_dir": 207
   },
   {
     "date": "2026-04-22T23:23:04",
     "file": "IMG_7299.jpg",
     "temp_f": 42.2,
-    "code": 1
+    "code": 1,
+    "wind_mph": 3.9,
+    "wind_dir": 175
   },
   {
     "date": "2026-04-23T22:12:58",
     "file": "IMG_7301.jpg",
     "temp_f": 44.9,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.1,
+    "wind_dir": 95
   },
   {
     "date": "2026-04-25T00:45:10",
     "file": "IMG_7304.jpg",
     "temp_f": 39.7,
-    "code": 1
+    "code": 1,
+    "wind_mph": 1.7,
+    "wind_dir": 200
   },
   {
     "date": "2026-04-26T00:03:30",
     "file": "IMG_7307.jpg",
     "temp_f": 43.5,
-    "code": 3
+    "code": 3,
+    "wind_mph": 4.4,
+    "wind_dir": 241
   },
   {
     "date": "2026-04-26T18:44:31",
     "file": "IMG_7351.jpg",
     "temp_f": 55.5,
-    "code": 0
+    "code": 0,
+    "wind_mph": 3.5,
+    "wind_dir": 97
   },
   {
     "date": "2026-04-26T23:58:34",
     "file": "IMG_7353.jpg",
     "temp_f": 47.6,
-    "code": 3
+    "code": 3,
+    "wind_mph": 0.3,
+    "wind_dir": 270
   },
   {
     "date": "2026-04-28T00:17:57",
     "file": "IMG_7354.jpg",
     "temp_f": 47.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 1.4,
+    "wind_dir": 125
   },
   {
     "date": "2026-04-28T23:47:18",
     "file": "IMG_7359.jpg",
     "temp_f": 44.9,
-    "code": 3
+    "code": 3,
+    "wind_mph": 8.0,
+    "wind_dir": 75
   },
   {
     "date": "2026-04-30T00:16:01",
     "file": "IMG_7361.jpg",
     "temp_f": 46.5,
-    "code": 3
+    "code": 3,
+    "wind_mph": 4.1,
+    "wind_dir": 64
   },
   {
     "date": "2026-05-02T00:34:45",
     "file": "IMG_7368.jpg",
     "temp_f": 48.4,
-    "code": 3
+    "code": 3,
+    "wind_mph": 4.1,
+    "wind_dir": 204
   },
   {
     "date": "2026-05-04T00:04:34",
     "file": "IMG_7388.jpg",
     "temp_f": 43.6,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.4,
+    "wind_dir": 244
   },
   {
     "date": "2026-05-04T23:12:00",
     "file": "IMG_7392.jpg",
     "temp_f": 55.7,
-    "code": 3
+    "code": 3,
+    "wind_mph": 12.0,
+    "wind_dir": 211
   },
   {
     "date": "2026-05-06T00:10:02",
     "file": "IMG_7394.jpg",
     "temp_f": 63.0,
-    "code": 3
+    "code": 3,
+    "wind_mph": 15.3,
+    "wind_dir": 208
   },
   {
     "date": "2026-05-09T00:23:41",
     "file": "IMG_7402.jpg",
     "temp_f": 47.5,
-    "code": 0
+    "code": 0,
+    "wind_mph": 4.3,
+    "wind_dir": 249
   },
   {
     "date": "2026-05-11T23:30:56",
     "file": "IMG_7436.jpg",
     "temp_f": 51.1,
-    "code": 0
+    "code": 0,
+    "wind_mph": 6.0,
+    "wind_dir": 323
   },
   {
     "date": "2026-05-13T00:49:54",
     "file": "IMG_7461.jpg",
     "temp_f": 52.1,
-    "code": 3
+    "code": 3,
+    "wind_mph": 0.5,
+    "wind_dir": 45
   },
   {
     "date": "2026-05-14T01:03:08",
     "file": "IMG_7467.jpg",
     "temp_f": 55.1,
-    "code": 3
+    "code": 3,
+    "wind_mph": 8.4,
+    "wind_dir": 169
   },
   {
     "date": "2026-05-15T00:53:13",
     "file": "IMG_7469.jpg",
     "temp_f": 51.0,
-    "code": 3
+    "code": 3,
+    "wind_mph": 3.1,
+    "wind_dir": 319
   },
   {
     "date": "2026-05-15T23:01:48",
     "file": "IMG_7473.jpg",
     "temp_f": 51.2,
-    "code": 0
+    "code": 0,
+    "wind_mph": 2.4,
+    "wind_dir": 254
   },
   {
     "date": "2026-05-16T17:20:10",
     "file": "IMG_7545.jpg",
     "temp_f": 75.0,
-    "code": 0
+    "code": 0,
+    "wind_mph": 12.2,
+    "wind_dir": 230
   }
 ]
