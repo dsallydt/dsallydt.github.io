@@ -48,6 +48,11 @@ Only new/modified photos get re-resized, so reruns are fast.
 - `python3` (used inside `build.sh` to fetch weather and emit JSON)
 - Internet access at build time (for the weather fetch); the site itself is fully static.
 
+## To run locally
+
+- python3 -m http.server 8000
+- Then open http://localhost:8000
+
 ## Files
 
 - `index.html` — the entire site (HTML + CSS + JS, no build step)
