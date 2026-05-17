@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Same Spot</title>
+<title>Photos on the Charles</title>
 <style>
   :root {
     --bg: #fafaf7;
@@ -38,6 +38,7 @@
 
   .nav {
     position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 2;
     background: rgba(255,255,255,0.85);
     border: none;
     width: 36px; height: 36px;
@@ -97,7 +98,7 @@
 </head>
 <body>
   <header>
-    <h1>Same Spot</h1>
+    <h1 id="title">Photos on the Charles</h1>
     <p>One photo, every time I walk by.</p>
   </header>
 
@@ -120,6 +121,9 @@
 (async function () {
   const res = await fetch('manifest.json', { cache: 'no-cache' });
   const photos = await res.json();
+
+  document.getElementById('title').textContent = photos.length + ' Photos on the Charles';
+  document.title = photos.length + ' Photos on the Charles';
 
   const stage = document.getElementById('stage');
   const caption = document.getElementById('caption');
