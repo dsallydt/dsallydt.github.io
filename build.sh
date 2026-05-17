@@ -40,7 +40,7 @@ done
 sort "$tmp" > "$tmp.sorted"
 
 python3 - "$tmp.sorted" <<'PY'
-import json, os, sys, urllib.request, datetime
+import json, os, sys, subprocess, datetime
 
 entries = []
 with open(sys.argv[1]) as f:
@@ -56,6 +56,17 @@ if os.path.exists('captions.json'):
     except Exception as e:
         print(f'warning: could not parse captions.json ({e})', file=sys.stderr)
 
+# Preserve existing weather so a failed fetch doesn't wipe known data.
+prev_weather = {}
+if os.path.exists('manifest.json'):
+    try:
+        with open('manifest.json') as f:
+            for e in json.load(f):
+                if e.get('temp_f') is not None:
+                    prev_weather[e['file']] = (e.get('temp_f'), e.get('code'))
+    except Exception:
+        pass
+
 # Boston, fetch hourly weather across the photo date range in one request.
 start = entries[0]['date'][:10]
 end = entries[-1]['date'][:10]
@@ -68,14 +79,17 @@ url = (
     '&timezone=America/New_York'
 )
 try:
-    with urllib.request.urlopen(url, timeout=30) as r:
-        data = json.load(r)
+    raw = subprocess.run(
+        ['curl', '-fsSL', '--max-time', '30', url],
+        capture_output=True, check=True,
+    ).stdout
+    data = json.loads(raw)
     times = data['hourly']['time']
     temps = data['hourly']['temperature_2m']
     codes = data['hourly']['weather_code']
     index = {t: i for i, t in enumerate(times)}
 except Exception as e:
-    print(f'warning: weather fetch failed ({e}); writing manifest without weather', file=sys.stderr)
+    print(f'warning: weather fetch failed ({e}); keeping any existing weather data', file=sys.stderr)
     index = {}
     temps = codes = []
 
@@ -83,8 +97,14 @@ for e in entries:
     dt = datetime.datetime.fromisoformat(e['date'])
     key = dt.strftime('%Y-%m-%dT%H:00')
     i = index.get(key)
-    e['temp_f'] = temps[i] if i is not None else None
-    e['code'] = codes[i] if i is not None else None
+    if i is not None:
+        e['temp_f'] = temps[i]
+        e['code'] = codes[i]
+    elif e['file'] in prev_weather:
+        e['temp_f'], e['code'] = prev_weather[e['file']]
+    else:
+        e['temp_f'] = None
+        e['code'] = None
     cap = captions.get(e['file'])
     if cap:
         e['caption'] = cap
