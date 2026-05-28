@@ -10,12 +10,14 @@ import json
 from preprocess.photos import discover
 from preprocess.weather import add_weather
 from preprocess.captions import add_captions
+from preprocess.daynight import add_daynight
 
 
 def main() -> None:
     entries = discover()
     add_weather(entries)
     add_captions(entries)
+    add_daynight(entries)
 
     with open('manifest.json', 'w') as f:
         json.dump(entries, f, indent=2)

@@ -6,7 +6,9 @@
     "code": 51,
     "wind_mph": 3.2,
     "wind_dir": 348,
-    "weather": "55\u00b0F \u00b7 Light drizzle \u00b7 calm"
+    "weather": "55\u00b0F \u00b7 Light drizzle \u00b7 calm",
+    "caption": "The first photo I took on the bridge, before I knew I wanted to start this project.",
+    "is_night": true
   },
   {
     "date": "2026-01-07T20:23:35",
@@ -15,7 +17,9 @@
     "code": 0,
     "wind_mph": 6.9,
     "wind_dir": 270,
-    "weather": "35\u00b0F \u00b7 Clear \u00b7 7 mph W"
+    "weather": "35\u00b0F \u00b7 Clear \u00b7 7 mph W",
+    "caption": "At the start of 2026, I decided to start this photography project.\nOn this day, the temperature was mild after a deep freeze the week prior, so the ice was half melted into this particularly unique texture.",
+    "is_night": true
   },
   {
     "date": "2026-01-10T23:57:34",
@@ -24,7 +28,9 @@
     "code": 61,
     "wind_mph": 10.9,
     "wind_dir": 104,
-    "weather": "40\u00b0F \u00b7 Light rain \u00b7 11 mph E"
+    "weather": "40\u00b0F \u00b7 Light rain \u00b7 11 mph E",
+    "caption": "The river surface was glassy and close to melting after few days of mild temperatures.",
+    "is_night": true
   },
   {
     "date": "2026-01-11T16:52:33",
@@ -33,7 +39,8 @@
     "code": 1,
     "wind_mph": 4.2,
     "wind_dir": 284,
-    "weather": "44\u00b0F \u00b7 Mostly clear \u00b7 4 mph W"
+    "weather": "44\u00b0F \u00b7 Mostly clear \u00b7 4 mph W",
+    "is_night": false
   },
   {
     "date": "2026-01-21T19:47:28",
@@ -42,7 +49,9 @@
     "code": 3,
     "wind_mph": 9.8,
     "wind_dir": 195,
-    "weather": "24\u00b0F \u00b7 Overcast \u00b7 10 mph S"
+    "weather": "24\u00b0F \u00b7 Overcast \u00b7 10 mph S",
+    "caption": "On the left, the river surface was covered in ice sheets showing cracks; on the right, the surface had been water during the day, and the thinnest layer of matte frost appeared at night.",
+    "is_night": false
   },
   {
     "date": "2026-01-26T20:47:43",
@@ -51,7 +60,8 @@
     "code": 73,
     "wind_mph": 11.5,
     "wind_dir": 319,
-    "weather": "18\u00b0F \u00b7 Snow \u00b7 12 mph NW"
+    "weather": "18\u00b0F \u00b7 Snow \u00b7 12 mph NW",
+    "is_night": true
   },
   {
     "date": "2026-01-27T23:41:19",
@@ -60,7 +70,8 @@
     "code": 0,
     "wind_mph": 10.4,
     "wind_dir": 283,
-    "weather": "14\u00b0F \u00b7 Clear \u00b7 10 mph W"
+    "weather": "14\u00b0F \u00b7 Clear \u00b7 10 mph W",
+    "is_night": true
   },
   {
     "date": "2026-01-28T22:59:11",
@@ -69,7 +80,8 @@
     "code": 3,
     "wind_mph": 6.4,
     "wind_dir": 290,
-    "weather": "12\u00b0F \u00b7 Overcast \u00b7 6 mph W"
+    "weather": "12\u00b0F \u00b7 Overcast \u00b7 6 mph W",
+    "is_night": true
   },
   {
     "date": "2026-02-02T22:53:12",
@@ -78,7 +90,8 @@
     "code": 0,
     "wind_mph": 9.0,
     "wind_dir": 316,
-    "weather": "21\u00b0F \u00b7 Clear \u00b7 9 mph NW"
+    "weather": "21\u00b0F \u00b7 Clear \u00b7 9 mph NW",
+    "is_night": true
   },
   {
     "date": "2026-02-03T20:11:37",
@@ -87,7 +100,8 @@
     "code": 0,
     "wind_mph": 6.2,
     "wind_dir": 216,
-    "weather": "20\u00b0F \u00b7 Clear \u00b7 6 mph SW"
+    "weather": "20\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-02-06T17:36:30",
@@ -96,7 +110,8 @@
     "code": 3,
     "wind_mph": 4.2,
     "wind_dir": 32,
-    "weather": "28\u00b0F \u00b7 Overcast \u00b7 4 mph NE"
+    "weather": "28\u00b0F \u00b7 Overcast \u00b7 4 mph NE",
+    "is_night": false
   },
   {
     "date": "2026-02-08T21:45:26",
@@ -106,7 +121,8 @@
     "wind_mph": 15.0,
     "wind_dir": 322,
     "weather": "10\u00b0F \u00b7 Overcast \u00b7 15 mph NW",
-    "caption": "Superbowl weekend, Seahawks vs Patriots. The Prudential Tower cheered the team on. (They lost.)"
+    "caption": "Superbowl weekend, Seahawks vs Patriots. The Prudential Tower cheered the team on. (They lost.)",
+    "is_night": true
   },
   {
     "date": "2026-02-10T23:55:20",
@@ -115,7 +131,9 @@
     "code": 73,
     "wind_mph": 7.3,
     "wind_dir": 196,
-    "weather": "29\u00b0F \u00b7 Snow \u00b7 7 mph S"
+    "weather": "29\u00b0F \u00b7 Snow \u00b7 7 mph S",
+    "caption": "A peaceful night of fresh snow.",
+    "is_night": true
   },
   {
     "date": "2026-02-12T22:17:00",
@@ -125,7 +143,8 @@
     "wind_mph": 10.8,
     "wind_dir": 314,
     "weather": "25\u00b0F \u00b7 Overcast \u00b7 11 mph NW",
-    "caption": "Footsteps on the ice! I would not be so brave."
+    "caption": "Footsteps on the ice! I would not be so brave.",
+    "is_night": true
   },
   {
     "date": "2026-02-13T20:25:59",
@@ -134,7 +153,8 @@
     "code": 0,
     "wind_mph": 7.8,
     "wind_dir": 252,
-    "weather": "24\u00b0F \u00b7 Clear \u00b7 8 mph W"
+    "weather": "24\u00b0F \u00b7 Clear \u00b7 8 mph W",
+    "is_night": true
   },
   {
     "date": "2026-02-16T22:56:57",
@@ -143,7 +163,8 @@
     "code": 0,
     "wind_mph": 2.8,
     "wind_dir": 337,
-    "weather": "25\u00b0F \u00b7 Clear \u00b7 calm"
+    "weather": "25\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-02-17T20:07:43",
@@ -152,7 +173,8 @@
     "code": 3,
     "wind_mph": 5.5,
     "wind_dir": 215,
-    "weather": "35\u00b0F \u00b7 Overcast \u00b7 6 mph SW"
+    "weather": "35\u00b0F \u00b7 Overcast \u00b7 6 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-02-18T19:01:21",
@@ -161,7 +183,8 @@
     "code": 51,
     "wind_mph": 1.9,
     "wind_dir": 280,
-    "weather": "36\u00b0F \u00b7 Light drizzle \u00b7 calm"
+    "weather": "36\u00b0F \u00b7 Light drizzle \u00b7 calm",
+    "is_night": false
   },
   {
     "date": "2026-02-19T17:34:47",
@@ -170,7 +193,8 @@
     "code": 3,
     "wind_mph": 2.8,
     "wind_dir": 85,
-    "weather": "34\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "34\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": false
   },
   {
     "date": "2026-02-19T23:11:06",
@@ -179,7 +203,8 @@
     "code": 3,
     "wind_mph": 6.0,
     "wind_dir": 177,
-    "weather": "31\u00b0F \u00b7 Overcast \u00b7 6 mph S"
+    "weather": "31\u00b0F \u00b7 Overcast \u00b7 6 mph S",
+    "is_night": true
   },
   {
     "date": "2026-02-20T22:12:17",
@@ -188,7 +213,8 @@
     "code": 73,
     "wind_mph": 10.3,
     "wind_dir": 65,
-    "weather": "33\u00b0F \u00b7 Snow \u00b7 10 mph NE"
+    "weather": "33\u00b0F \u00b7 Snow \u00b7 10 mph NE",
+    "is_night": true
   },
   {
     "date": "2026-02-21T18:05:44",
@@ -197,7 +223,8 @@
     "code": 3,
     "wind_mph": 1.1,
     "wind_dir": 90,
-    "weather": "28\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "28\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": false
   },
   {
     "date": "2026-03-03T22:53:00",
@@ -206,7 +233,8 @@
     "code": 61,
     "wind_mph": 4.1,
     "wind_dir": 125,
-    "weather": "32\u00b0F \u00b7 Light rain \u00b7 4 mph SE"
+    "weather": "32\u00b0F \u00b7 Light rain \u00b7 4 mph SE",
+    "is_night": true
   },
   {
     "date": "2026-03-04T23:41:26",
@@ -215,7 +243,8 @@
     "code": 0,
     "wind_mph": 6.7,
     "wind_dir": 252,
-    "weather": "34\u00b0F \u00b7 Clear \u00b7 7 mph W"
+    "weather": "34\u00b0F \u00b7 Clear \u00b7 7 mph W",
+    "is_night": true
   },
   {
     "date": "2026-03-05T23:39:44",
@@ -224,7 +253,8 @@
     "code": 71,
     "wind_mph": 13.4,
     "wind_dir": 53,
-    "weather": "34\u00b0F \u00b7 Light snow \u00b7 13 mph NE"
+    "weather": "34\u00b0F \u00b7 Light snow \u00b7 13 mph NE",
+    "is_night": true
   },
   {
     "date": "2026-03-09T22:27:52",
@@ -233,7 +263,9 @@
     "code": 0,
     "wind_mph": 10.4,
     "wind_dir": 225,
-    "weather": "48\u00b0F \u00b7 Clear \u00b7 10 mph SW"
+    "weather": "48\u00b0F \u00b7 Clear \u00b7 10 mph SW",
+    "caption": "Over the next four days, the ice melted for good for the season.",
+    "is_night": true
   },
   {
     "date": "2026-03-10T22:38:43",
@@ -242,7 +274,8 @@
     "code": 0,
     "wind_mph": 6.5,
     "wind_dir": 242,
-    "weather": "56\u00b0F \u00b7 Clear \u00b7 6 mph SW"
+    "weather": "56\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-03-11T22:30:55",
@@ -251,7 +284,8 @@
     "code": 3,
     "wind_mph": 14.4,
     "wind_dir": 196,
-    "weather": "58\u00b0F \u00b7 Overcast \u00b7 14 mph S"
+    "weather": "58\u00b0F \u00b7 Overcast \u00b7 14 mph S",
+    "is_night": true
   },
   {
     "date": "2026-03-12T20:17:00",
@@ -260,7 +294,8 @@
     "code": 71,
     "wind_mph": 6.6,
     "wind_dir": 255,
-    "weather": "36\u00b0F \u00b7 Light snow \u00b7 7 mph W"
+    "weather": "36\u00b0F \u00b7 Light snow \u00b7 7 mph W",
+    "is_night": true
   },
   {
     "date": "2026-03-16T22:42:15",
@@ -269,7 +304,8 @@
     "code": 63,
     "wind_mph": 20.2,
     "wind_dir": 191,
-    "weather": "58\u00b0F \u00b7 Rain \u00b7 20 mph S"
+    "weather": "58\u00b0F \u00b7 Rain \u00b7 20 mph S",
+    "is_night": true
   },
   {
     "date": "2026-03-17T19:28:44",
@@ -278,7 +314,8 @@
     "code": 0,
     "wind_mph": 13.3,
     "wind_dir": 269,
-    "weather": "34\u00b0F \u00b7 Clear \u00b7 13 mph W"
+    "weather": "34\u00b0F \u00b7 Clear \u00b7 13 mph W",
+    "is_night": false
   },
   {
     "date": "2026-03-26T20:37:52",
@@ -287,7 +324,8 @@
     "code": 3,
     "wind_mph": 10.9,
     "wind_dir": 199,
-    "weather": "56\u00b0F \u00b7 Overcast \u00b7 11 mph S"
+    "weather": "56\u00b0F \u00b7 Overcast \u00b7 11 mph S",
+    "is_night": true
   },
   {
     "date": "2026-04-07T22:58:39",
@@ -296,7 +334,8 @@
     "code": 0,
     "wind_mph": 11.8,
     "wind_dir": 296,
-    "weather": "36\u00b0F \u00b7 Clear \u00b7 12 mph NW"
+    "weather": "36\u00b0F \u00b7 Clear \u00b7 12 mph NW",
+    "is_night": true
   },
   {
     "date": "2026-04-08T21:37:48",
@@ -305,7 +344,8 @@
     "code": 0,
     "wind_mph": 6.0,
     "wind_dir": 152,
-    "weather": "35\u00b0F \u00b7 Clear \u00b7 6 mph SE"
+    "weather": "35\u00b0F \u00b7 Clear \u00b7 6 mph SE",
+    "is_night": true
   },
   {
     "date": "2026-04-09T20:52:23",
@@ -314,7 +354,8 @@
     "code": 1,
     "wind_mph": 10.3,
     "wind_dir": 187,
-    "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 10 mph S"
+    "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 10 mph S",
+    "is_night": true
   },
   {
     "date": "2026-04-10T22:35:51",
@@ -323,7 +364,8 @@
     "code": 3,
     "wind_mph": 12.2,
     "wind_dir": 221,
-    "weather": "51\u00b0F \u00b7 Overcast \u00b7 12 mph SW"
+    "weather": "51\u00b0F \u00b7 Overcast \u00b7 12 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-04-11T11:39:35",
@@ -332,7 +374,8 @@
     "code": 0,
     "wind_mph": 11.9,
     "wind_dir": 326,
-    "weather": "53\u00b0F \u00b7 Clear \u00b7 12 mph NW"
+    "weather": "53\u00b0F \u00b7 Clear \u00b7 12 mph NW",
+    "is_night": false
   },
   {
     "date": "2026-04-12T23:18:48",
@@ -341,7 +384,8 @@
     "code": 3,
     "wind_mph": 7.7,
     "wind_dir": 196,
-    "weather": "44\u00b0F \u00b7 Overcast \u00b7 8 mph S"
+    "weather": "44\u00b0F \u00b7 Overcast \u00b7 8 mph S",
+    "is_night": true
   },
   {
     "date": "2026-04-13T23:13:57",
@@ -350,7 +394,8 @@
     "code": 0,
     "wind_mph": 9.6,
     "wind_dir": 248,
-    "weather": "63\u00b0F \u00b7 Clear \u00b7 10 mph W"
+    "weather": "63\u00b0F \u00b7 Clear \u00b7 10 mph W",
+    "is_night": true
   },
   {
     "date": "2026-04-14T23:45:36",
@@ -359,7 +404,8 @@
     "code": 3,
     "wind_mph": 8.6,
     "wind_dir": 222,
-    "weather": "63\u00b0F \u00b7 Overcast \u00b7 9 mph SW"
+    "weather": "63\u00b0F \u00b7 Overcast \u00b7 9 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-04-15T23:16:49",
@@ -368,7 +414,8 @@
     "code": 3,
     "wind_mph": 3.0,
     "wind_dir": 45,
-    "weather": "49\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "49\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-04-16T21:55:02",
@@ -377,7 +424,8 @@
     "code": 3,
     "wind_mph": 3.8,
     "wind_dir": 87,
-    "weather": "55\u00b0F \u00b7 Overcast \u00b7 4 mph E"
+    "weather": "55\u00b0F \u00b7 Overcast \u00b7 4 mph E",
+    "is_night": true
   },
   {
     "date": "2026-04-17T22:17:30",
@@ -386,7 +434,8 @@
     "code": 0,
     "wind_mph": 1.8,
     "wind_dir": 72,
-    "weather": "49\u00b0F \u00b7 Clear \u00b7 calm"
+    "weather": "49\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-04-19T21:55:48",
@@ -395,7 +444,8 @@
     "code": 1,
     "wind_mph": 9.7,
     "wind_dir": 289,
-    "weather": "39\u00b0F \u00b7 Mostly clear \u00b7 10 mph W"
+    "weather": "39\u00b0F \u00b7 Mostly clear \u00b7 10 mph W",
+    "is_night": true
   },
   {
     "date": "2026-04-20T23:43:45",
@@ -404,7 +454,8 @@
     "code": 3,
     "wind_mph": 7.3,
     "wind_dir": 2,
-    "weather": "40\u00b0F \u00b7 Overcast \u00b7 7 mph N"
+    "weather": "40\u00b0F \u00b7 Overcast \u00b7 7 mph N",
+    "is_night": true
   },
   {
     "date": "2026-04-22T00:11:11",
@@ -413,7 +464,8 @@
     "code": 2,
     "wind_mph": 7.8,
     "wind_dir": 207,
-    "weather": "38\u00b0F \u00b7 Partly cloudy \u00b7 8 mph SW"
+    "weather": "38\u00b0F \u00b7 Partly cloudy \u00b7 8 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-04-22T23:23:04",
@@ -422,7 +474,8 @@
     "code": 1,
     "wind_mph": 3.9,
     "wind_dir": 175,
-    "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 4 mph S"
+    "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 4 mph S",
+    "is_night": true
   },
   {
     "date": "2026-04-23T22:12:58",
@@ -431,7 +484,8 @@
     "code": 0,
     "wind_mph": 6.1,
     "wind_dir": 95,
-    "weather": "45\u00b0F \u00b7 Clear \u00b7 6 mph E"
+    "weather": "45\u00b0F \u00b7 Clear \u00b7 6 mph E",
+    "is_night": true
   },
   {
     "date": "2026-04-25T00:45:10",
@@ -440,7 +494,8 @@
     "code": 1,
     "wind_mph": 1.7,
     "wind_dir": 200,
-    "weather": "40\u00b0F \u00b7 Mostly clear \u00b7 calm"
+    "weather": "40\u00b0F \u00b7 Mostly clear \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-04-26T00:03:30",
@@ -449,7 +504,8 @@
     "code": 3,
     "wind_mph": 4.4,
     "wind_dir": 241,
-    "weather": "44\u00b0F \u00b7 Overcast \u00b7 4 mph SW"
+    "weather": "44\u00b0F \u00b7 Overcast \u00b7 4 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-04-26T18:44:31",
@@ -458,7 +514,9 @@
     "code": 0,
     "wind_mph": 3.5,
     "wind_dir": 97,
-    "weather": "56\u00b0F \u00b7 Clear \u00b7 4 mph E"
+    "weather": "56\u00b0F \u00b7 Clear \u00b7 4 mph E",
+    "caption": "I like the way the water ripples distort the reflection of the prudential center on the right.",
+    "is_night": false
   },
   {
     "date": "2026-04-26T23:58:34",
@@ -467,7 +525,8 @@
     "code": 3,
     "wind_mph": 0.3,
     "wind_dir": 270,
-    "weather": "48\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "48\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-04-28T00:17:57",
@@ -476,7 +535,8 @@
     "code": 0,
     "wind_mph": 1.4,
     "wind_dir": 125,
-    "weather": "47\u00b0F \u00b7 Clear \u00b7 calm"
+    "weather": "47\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-04-28T23:47:18",
@@ -485,7 +545,8 @@
     "code": 3,
     "wind_mph": 8.0,
     "wind_dir": 75,
-    "weather": "45\u00b0F \u00b7 Overcast \u00b7 8 mph E"
+    "weather": "45\u00b0F \u00b7 Overcast \u00b7 8 mph E",
+    "is_night": true
   },
   {
     "date": "2026-04-30T00:16:01",
@@ -494,7 +555,8 @@
     "code": 3,
     "wind_mph": 4.1,
     "wind_dir": 64,
-    "weather": "46\u00b0F \u00b7 Overcast \u00b7 4 mph NE"
+    "weather": "46\u00b0F \u00b7 Overcast \u00b7 4 mph NE",
+    "is_night": true
   },
   {
     "date": "2026-05-02T00:34:45",
@@ -503,7 +565,8 @@
     "code": 3,
     "wind_mph": 4.1,
     "wind_dir": 204,
-    "weather": "48\u00b0F \u00b7 Overcast \u00b7 4 mph SW"
+    "weather": "48\u00b0F \u00b7 Overcast \u00b7 4 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-05-04T00:04:34",
@@ -512,7 +575,8 @@
     "code": 0,
     "wind_mph": 6.4,
     "wind_dir": 244,
-    "weather": "44\u00b0F \u00b7 Clear \u00b7 6 mph SW"
+    "weather": "44\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-05-04T23:12:00",
@@ -521,7 +585,8 @@
     "code": 3,
     "wind_mph": 12.0,
     "wind_dir": 211,
-    "weather": "56\u00b0F \u00b7 Overcast \u00b7 12 mph SW"
+    "weather": "56\u00b0F \u00b7 Overcast \u00b7 12 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-05-06T00:10:02",
@@ -530,7 +595,8 @@
     "code": 3,
     "wind_mph": 15.3,
     "wind_dir": 208,
-    "weather": "63\u00b0F \u00b7 Overcast \u00b7 15 mph SW"
+    "weather": "63\u00b0F \u00b7 Overcast \u00b7 15 mph SW",
+    "is_night": true
   },
   {
     "date": "2026-05-09T00:23:41",
@@ -539,7 +605,8 @@
     "code": 0,
     "wind_mph": 4.3,
     "wind_dir": 249,
-    "weather": "48\u00b0F \u00b7 Clear \u00b7 4 mph W"
+    "weather": "48\u00b0F \u00b7 Clear \u00b7 4 mph W",
+    "is_night": true
   },
   {
     "date": "2026-05-11T23:30:56",
@@ -548,7 +615,8 @@
     "code": 0,
     "wind_mph": 6.0,
     "wind_dir": 323,
-    "weather": "51\u00b0F \u00b7 Clear \u00b7 6 mph NW"
+    "weather": "51\u00b0F \u00b7 Clear \u00b7 6 mph NW",
+    "is_night": true
   },
   {
     "date": "2026-05-13T00:49:54",
@@ -557,7 +625,8 @@
     "code": 3,
     "wind_mph": 0.5,
     "wind_dir": 45,
-    "weather": "52\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "52\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-05-14T01:03:08",
@@ -566,7 +635,8 @@
     "code": 3,
     "wind_mph": 8.4,
     "wind_dir": 169,
-    "weather": "55\u00b0F \u00b7 Overcast \u00b7 8 mph S"
+    "weather": "55\u00b0F \u00b7 Overcast \u00b7 8 mph S",
+    "is_night": true
   },
   {
     "date": "2026-05-15T00:53:13",
@@ -575,7 +645,9 @@
     "code": 3,
     "wind_mph": 3.1,
     "wind_dir": 319,
-    "weather": "51\u00b0F \u00b7 Overcast \u00b7 calm"
+    "weather": "51\u00b0F \u00b7 Overcast \u00b7 calm",
+    "caption": "An eerily calm night with high contrast.",
+    "is_night": true
   },
   {
     "date": "2026-05-15T23:01:48",
@@ -584,7 +656,8 @@
     "code": 0,
     "wind_mph": 2.4,
     "wind_dir": 254,
-    "weather": "51\u00b0F \u00b7 Clear \u00b7 calm"
+    "weather": "51\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true
   },
   {
     "date": "2026-05-16T17:20:10",
@@ -593,6 +666,49 @@
     "code": 0,
     "wind_mph": 12.2,
     "wind_dir": 230,
-    "weather": "75\u00b0F \u00b7 Clear \u00b7 12 mph SW"
+    "weather": "75\u00b0F \u00b7 Clear \u00b7 12 mph SW",
+    "caption": "Look closely: a sailboat tipped over in front of the Hancock tower. Help is on site.",
+    "is_night": false
+  },
+  {
+    "date": "2026-05-17T00:18:19",
+    "file": "IMG_7548.jpg",
+    "temp_f": 61.6,
+    "code": 2,
+    "wind_mph": 11.7,
+    "wind_dir": 217,
+    "weather": "62\u00b0F \u00b7 Partly cloudy \u00b7 12 mph SW",
+    "is_night": true
+  },
+  {
+    "date": "2026-05-24T01:03:16",
+    "file": "IMG_7734.jpg",
+    "temp_f": 53.8,
+    "code": 51,
+    "wind_mph": 3.6,
+    "wind_dir": 169,
+    "weather": "54\u00b0F \u00b7 Light drizzle \u00b7 4 mph S",
+    "is_night": true
+  },
+  {
+    "date": "2026-05-25T00:38:08",
+    "file": "IMG_7739.jpg",
+    "temp_f": 54.1,
+    "code": 3,
+    "wind_mph": 7.0,
+    "wind_dir": 81,
+    "weather": "54\u00b0F \u00b7 Overcast \u00b7 7 mph E",
+    "caption": "The fog was atmospheric. In the distance to the right of the photo was a thunderstorm. The white horizon was illuminated by the storm and lightning.",
+    "is_night": true
+  },
+  {
+    "date": "2026-05-26T06:08:54",
+    "file": "IMG_7744.jpg",
+    "temp_f": 56.6,
+    "code": 1,
+    "wind_mph": 4.7,
+    "wind_dir": 312,
+    "weather": "57\u00b0F \u00b7 Mostly clear \u00b7 5 mph NW",
+    "is_night": false
   }
 ]

@@ -16,6 +16,32 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Site nav (top-right corner) */
+.site-nav {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+}
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+.site-nav a:hover { color: var(--fg); }
+
+/* About page */
+.about {
+  max-width: 640px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--fg);
+}
+.about p { margin: 0 0 1em; }
+.about a { color: var(--fg); }
+
 /* Header */
 header { text-align: center; padding: 56px 24px 24px; }
 header h1 { margin: 0; font-weight: 400; font-size: 1.5rem; letter-spacing: 0.02em; }

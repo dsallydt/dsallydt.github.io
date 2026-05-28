@@ -2,8 +2,10 @@
   const res = await fetch('manifest.json', { cache: 'no-cache' });
   const photos = await res.json();
 
-  const title = photos.length + ' Photos on the Charles';
+  const nightCount = photos.filter(p => p.is_night).length;
+  const title = nightCount + ' Nights on the Charles';
   document.getElementById('title').textContent = title;
+  document.getElementById('subtitle').textContent = 'and a few days';
   document.title = title;
 
   const stage = document.getElementById('stage');

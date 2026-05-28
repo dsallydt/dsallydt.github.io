@@ -64,15 +64,26 @@ Only new/modified photos get re-resized, so reruns are fast.
 
 ## Files
 
-- `index.html` — page structure
-- `styles.css` — styling
-- `app.js` — carousel + grid behavior
+- `index.html` — gallery page structure
+- `about.html` — about page (edit the text inside `<main class="about">`)
+- `styles.css` — styling (shared by both pages)
+- `app.js` — carousel + grid behavior (loaded only on the gallery page)
 - `build.py` — orchestrator; regenerates `images/` and `manifest.json` from `photos/`
 - `preprocess/` — individual preprocessing modules
 - `captions.json` — optional manual captions, keyed by filename
 - `manifest.json` — generated; do not edit by hand
 - `photos/` — original photos (gitignored)
 - `images/web/`, `images/thumb/` — generated, committed
+
+## Future ideas
+
+Small polish to consider when ready:
+
+- **SEO & link previews.** Add `<meta name="description">` and Open Graph tags (`og:title`, `og:image`, `og:description`) in `index.html`. These control how the site shows up in Google results and what preview card appears when the URL is shared on iMessage, Slack, Twitter, etc. Pick one favorite photo as the preview image.
+- **Favicon.** The small icon in the browser tab and bookmarks. Drop a `favicon.png` (256×256 is plenty) at the project root and add `<link rel="icon" href="favicon.png">` to `<head>`.
+- **Permalink to a specific photo.** Today the URL is the same no matter which photo you're viewing. Could use `#62` (or `#2026-05-16`) so you can share a particular shot.
+- **Lightbox** on grid click instead of jumping to the carousel — bigger view without scrolling.
+- **Sun position / golden-hour flag** in the caption — Open-Meteo has it in the same archive endpoint, so it'd be a small addition to `preprocess/weather.py` (or a new `preprocess/sun.py`).
 
 ## Tweaking
 
