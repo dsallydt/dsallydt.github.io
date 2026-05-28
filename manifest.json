@@ -184,6 +184,7 @@
     "wind_mph": 1.9,
     "wind_dir": 280,
     "weather": "36\u00b0F \u00b7 Light drizzle \u00b7 calm",
+    "caption": "A few balmy days and the river wanted to melt again.",
     "is_night": false
   },
   {
@@ -275,6 +276,7 @@
     "wind_mph": 6.5,
     "wind_dir": 242,
     "weather": "56\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "caption": "As the ice turned into slush, the river stopped reflecting light. The night looked ominous.",
     "is_night": true
   },
   {
@@ -435,6 +437,7 @@
     "wind_mph": 1.8,
     "wind_dir": 72,
     "weather": "49\u00b0F \u00b7 Clear \u00b7 calm",
+    "caption": "A completely still night. A goose makes an appearance.",
     "is_night": true
   },
   {
@@ -698,7 +701,7 @@
     "wind_mph": 7.0,
     "wind_dir": 81,
     "weather": "54\u00b0F \u00b7 Overcast \u00b7 7 mph E",
-    "caption": "The fog was atmospheric. In the distance to the right of the photo was a thunderstorm. The white horizon was illuminated by the storm and lightning.",
+    "caption": "It was raining, and the fog was atmospheric. In the distance to the right of the photo was a thunderstorm. The white horizon was illuminated by the storm and lightning.",
     "is_night": true
   },
   {

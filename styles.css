@@ -99,7 +99,14 @@ header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
   font-variant-numeric: tabular-nums;
 }
 .weather { color: #999; font-size: 0.8rem; }
-.note { color: var(--fg); font-style: italic; font-size: 0.9rem; margin-top: 6px; display: block; }
+.note {
+  color: var(--fg);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  display: block;
+  white-space: pre-line;
+}
 .counter {
   text-align: center;
   color: #aaa;
