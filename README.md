@@ -9,7 +9,7 @@ Live at https://dsallydt.github.io/
 1. Drop new photos into `photos/` (any case of `.jpg` / `.JPG`).
 2. Run the build:
    ```
-   ./build.sh
+   ./build.py
    ```
 3. Commit and push:
    ```
@@ -31,32 +31,44 @@ Some days you might want to note something special. Edit `captions.json` and add
 }
 ```
 
-Re-run `./build.sh` and the caption appears below the date/weather line in italic. Photos without an entry get no caption (the default).
+Re-run `./build.py` and the caption appears below the date/weather line in italic. Photos without an entry get no caption (the default).
 
-## What `build.sh` does
+## What `build.py` does
 
-- Resizes each photo into `images/web/` (1600px, used by the carousel) and `images/thumb/` (600px, used by the grid).
-- Reads each photo's EXIF creation date via `sips`.
-- Fetches hourly historical weather for the full date range from [Open-Meteo](https://open-meteo.com/) (free, no API key) in a single request.
-- Writes `manifest.json` with each photo's date, filename, temperature (°F), and WMO weather code, sorted chronologically.
+`build.py` is a thin orchestrator that runs each step in `preprocess/`:
+
+- `preprocess/photos.py` — discovers photos in `photos/`, resizes each into `images/web/` (1600px, used by the carousel) and `images/thumb/` (600px, for the grid), and reads each photo's EXIF creation date via `sips`.
+- `preprocess/weather.py` — fetches hourly historical weather for the full date range from [Open-Meteo](https://open-meteo.com/) (free, no API key) in a single request, and merges temperature, condition, and wind into each entry. If the fetch fails, existing weather already in `manifest.json` is preserved.
+- `preprocess/captions.py` — merges entries from `captions.json` into the manifest.
+
+The final `manifest.json` is what the page reads.
 
 Only new/modified photos get re-resized, so reruns are fast.
+
+### Adding a new preprocessing step
+
+1. Write a function in a new file under `preprocess/` that takes `entries: list[dict]` and mutates it in place (or returns a new list).
+2. Call it from `build.py`'s `main()`.
 
 ## Requirements
 
 - macOS (uses `sips` for image resizing and EXIF dates)
-- `python3` (used inside `build.sh` to fetch weather and emit JSON)
+- `python3` 3.9+
+- `curl` (used to fetch weather data)
 - Internet access at build time (for the weather fetch); the site itself is fully static.
 
 ## To run locally
 
-- python3 -m http.server 8000
+- `python3 -m http.server 8000`
 - Then open http://localhost:8000
 
 ## Files
 
-- `index.html` — the entire site (HTML + CSS + JS, no build step)
-- `build.sh` — regenerates `images/` and `manifest.json` from `photos/`
+- `index.html` — page structure
+- `styles.css` — styling
+- `app.js` — carousel + grid behavior
+- `build.py` — orchestrator; regenerates `images/` and `manifest.json` from `photos/`
+- `preprocess/` — individual preprocessing modules
 - `captions.json` — optional manual captions, keyed by filename
 - `manifest.json` — generated; do not edit by hand
 - `photos/` — original photos (gitignored)
@@ -64,6 +76,7 @@ Only new/modified photos get re-resized, so reruns are fast.
 
 ## Tweaking
 
-- **Location**: coordinates are hardcoded in `build.sh` (`42.36, -71.06`).
+- **Location**: coordinates are at the top of `preprocess/weather.py` (`42.36, -71.06`).
+- **Image sizes / quality**: at the top of `preprocess/photos.py`.
 - **Grid columns**: `grid-template-columns: repeat(4, 1fr)` in `index.html`.
 - **Carousel size**: `max-width` on `.carousel` and `aspect-ratio` on `.stage`.

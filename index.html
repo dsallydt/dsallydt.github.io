@@ -1,108 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photos on the Charles</title>
-<style>
-  :root {
-    --bg: #fafaf7;
-    --fg: #1a1a1a;
-    --muted: #6b6b6b;
-    --gap: 4px;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased; }
-  header { text-align: center; padding: 56px 24px 24px; }
-  header h1 { margin: 0; font-weight: 400; font-size: 1.5rem; letter-spacing: 0.02em; }
-  header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
-
-  .carousel { max-width: 900px; margin: 0 auto; padding: 16px; }
-  .stage {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    background: #eee;
-    overflow: hidden;
-    border-radius: 2px;
-  }
-  .stage img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 200ms ease;
-  }
-  .stage img.active { opacity: 1; }
-
-  .nav {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    z-index: 2;
-    background: rgba(255,255,255,0.85);
-    border: none;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: grid; place-items: center;
-    color: #222;
-    transition: background 150ms;
-  }
-  .nav:hover { background: #fff; }
-  .nav.prev { left: 12px; }
-  .nav.next { right: 12px; }
-  .nav:disabled { opacity: 0.3; cursor: default; }
-
-  .caption {
-    text-align: center;
-    padding: 14px 8px 4px;
-    color: var(--muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
-    font-variant-numeric: tabular-nums;
-  }
-  .weather { color: #999; font-size: 0.8rem; }
-  .note { color: var(--fg); font-style: italic; font-size: 0.9rem; margin-top: 6px; display: block; }
-  .counter { color: #aaa; font-size: 0.75rem; margin-top: 2px; }
-
-  .divider { text-align: center; color: #ccc; margin: 48px 0 24px; font-size: 0.75rem; letter-spacing: 0.2em; }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--gap);
-    max-width: 900px;
-    margin: 0 auto 80px;
-    padding: 0 16px;
-  }
-  .grid a {
-    display: block;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    background: #eee;
-  }
-  .grid img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 250ms ease;
-  }
-  .grid a:hover img { transform: scale(1.04); }
-
-  footer { text-align: center; color: #bbb; font-size: 0.75rem; padding: 24px 16px 48px; }
-
-  @media (max-width: 600px) {
-    header { padding: 32px 16px 16px; }
-    .grid { gap: 2px; }
-    .nav { width: 32px; height: 32px; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photos on the Charles</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header>
     <h1 id="title">Photos on the Charles</h1>
-    <!--<p>One photo, every time I walk by.</p>-->
   </header>
 
   <section class="carousel" aria-label="Photo slideshow">
@@ -111,7 +18,7 @@
       <button class="nav next" id="next" aria-label="Next">&#8250;</button>
     </div>
     <div class="caption" id="caption"></div>
-    <div class="counter" id="counter" style="text-align:center"></div>
+    <div class="counter" id="counter"></div>
   </section>
 
   <div class="divider">— ALL —</div>
@@ -119,136 +26,5 @@
   <section class="grid" id="grid" aria-label="All photos"></section>
 
   <footer></footer>
-
-<script>
-(async function () {
-  const res = await fetch('manifest.json', { cache: 'no-cache' });
-  const photos = await res.json();
-
-  document.getElementById('title').textContent = photos.length + ' Photos on the Charles';
-  document.title = photos.length + ' Photos on the Charles';
-
-  const stage = document.getElementById('stage');
-  const caption = document.getElementById('caption');
-  const counter = document.getElementById('counter');
-  const grid = document.getElementById('grid');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-
-  // Carousel: lazy-build slide elements; only show one at a time.
-  const slides = photos.map((p, i) => {
-    const img = document.createElement('img');
-    img.alt = '';
-    img.dataset.src = 'images/web/' + p.file;
-    if (i === 0) img.src = img.dataset.src;
-    stage.appendChild(img);
-    return img;
-  });
-
-  function fmtDate(iso) {
-    const d = new Date(iso);
-    if (isNaN(d)) return iso;
-    const date = d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
-    const time = d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
-    return date + ' · ' + time;
-  }
-
-  const WMO = {
-    0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
-    45: 'Fog', 48: 'Freezing fog',
-    51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
-    56: 'Freezing drizzle', 57: 'Heavy freezing drizzle',
-    61: 'Light rain', 63: 'Rain', 65: 'Heavy rain',
-    66: 'Freezing rain', 67: 'Heavy freezing rain',
-    71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains',
-    80: 'Light rain showers', 81: 'Rain showers', 82: 'Heavy rain showers',
-    85: 'Light snow showers', 86: 'Snow showers',
-    95: 'Thunderstorm', 96: 'Thunderstorm with hail', 99: 'Severe thunderstorm',
-  };
-  const COMPASS = ['N','NE','E','SE','S','SW','W','NW'];
-  function fmtWind(mph, dir) {
-    if (mph == null) return '';
-    const speed = Math.round(mph);
-    if (speed <= 3) return 'calm';
-    const point = dir == null ? '' : ' ' + COMPASS[Math.round(((dir % 360) / 45)) % 8];
-    return speed + ' mph' + point;
-  }
-  function fmtWeather(p) {
-    if (p.temp_f == null) return '';
-    const parts = [Math.round(p.temp_f) + '°F'];
-    if (WMO[p.code]) parts.push(WMO[p.code]);
-    const wind = fmtWind(p.wind_mph, p.wind_dir);
-    if (wind) parts.push(wind);
-    return parts.join(' · ');
-  }
-
-  let idx = 0;
-  function show(i) {
-    idx = (i + photos.length) % photos.length;
-    slides.forEach((el, j) => el.classList.toggle('active', j === idx));
-    // Lazy load current + neighbors
-    [idx - 1, idx, idx + 1].forEach(k => {
-      const n = (k + photos.length) % photos.length;
-      const el = slides[n];
-      if (!el.src) el.src = el.dataset.src;
-    });
-    const p = photos[idx];
-    const weather = fmtWeather(p);
-    caption.replaceChildren();
-    caption.append(fmtDate(p.date));
-    if (weather) {
-      caption.append(document.createElement('br'));
-      const w = document.createElement('span');
-      w.className = 'weather';
-      w.textContent = weather;
-      caption.append(w);
-    }
-    if (p.caption) {
-      const n = document.createElement('span');
-      n.className = 'note';
-      n.textContent = p.caption;
-      caption.append(n);
-    }
-    counter.textContent = (idx + 1) + ' / ' + photos.length;
-  }
-
-  prev.addEventListener('click', () => show(idx - 1));
-  next.addEventListener('click', () => show(idx + 1));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') show(idx - 1);
-    if (e.key === 'ArrowRight') show(idx + 1);
-  });
-
-  // Swipe support
-  let touchX = null;
-  stage.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
-  stage.addEventListener('touchend', (e) => {
-    if (touchX === null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
-    touchX = null;
-  });
-
-  show(0);
-
-  // Grid
-  photos.forEach((p, i) => {
-    const a = document.createElement('a');
-    a.href = '#';
-    a.setAttribute('aria-label', fmtDate(p.date));
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      show(i);
-      document.querySelector('.carousel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    const img = document.createElement('img');
-    img.loading = 'lazy';
-    img.src = 'images/thumb/' + p.file;
-    img.alt = '';
-    a.appendChild(img);
-    grid.appendChild(a);
-  });
-})();
-</script>
 </body>
 </html>
