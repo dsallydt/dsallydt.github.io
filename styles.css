@@ -42,6 +42,18 @@ html, body {
 .about p { margin: 0 0 1em; }
 .about a { color: var(--fg); }
 
+.map {
+  margin: 32px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.map iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  display: block;
+}
+
 /* Header */
 header { text-align: center; padding: 56px 24px 24px; }
 header h1 { margin: 0; font-weight: 400; font-size: 1.5rem; letter-spacing: 0.02em; }
