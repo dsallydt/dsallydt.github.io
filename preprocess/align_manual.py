@@ -35,7 +35,9 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from preprocess.align import (ALIGN_JSON, CACHE_WEB, WEB_DIR, REF_DAY,
-                              _decompose, _render, _load_store, _save_store)
+                              LEVEL_PIVOT,
+                              _decompose, _render, _rotate_about,
+                              _load_store, _save_store)
 
 DISPLAY_MAX = 1000  # downscale big images to fit the screen while clicking
 
@@ -64,7 +66,9 @@ def _solve_and_write(name, src_pts, dst_pts):
         'locked': True,
     }
     _save_store(store)
-    _render(name, M.tolist())   # write the aligned web + thumb right away
+    # Render with the same global rotation the last build used.
+    gmat = _rotate_about(LEVEL_PIVOT, store.get('global_rotate_deg', 0.0))
+    _render(name, M.tolist(), gmat)
     print(f'locked {name} in {ALIGN_JSON} and re-rendered it. '
           f'It will survive future builds.')
 

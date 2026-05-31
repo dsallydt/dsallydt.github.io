@@ -329,6 +329,17 @@
     "aligned": true
   },
   {
+    "date": "2026-03-13T21:28:37",
+    "file": "IMG_7122.jpg",
+    "temp_f": 34.2,
+    "code": 3,
+    "wind_mph": 9.2,
+    "wind_dir": 182,
+    "weather": "34\u00b0F \u00b7 Overcast \u00b7 9 mph S",
+    "is_night": true,
+    "aligned": true
+  },
+  {
     "date": "2026-03-16T22:42:15",
     "file": "IMG_7132.jpg",
     "temp_f": 58.0,
@@ -347,6 +358,17 @@
     "wind_mph": 13.3,
     "wind_dir": 269,
     "weather": "34\u00b0F \u00b7 Clear \u00b7 13 mph W",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-03-18T23:10:17",
+    "file": "IMG_7139.jpg",
+    "temp_f": 27.0,
+    "code": 0,
+    "wind_mph": 5.1,
+    "wind_dir": 169,
+    "weather": "27\u00b0F \u00b7 Clear \u00b7 5 mph S",
     "is_night": true,
     "aligned": true
   },
@@ -618,6 +640,17 @@
     "aligned": true
   },
   {
+    "date": "2026-05-01T00:31:28",
+    "file": "IMG_7364.jpg",
+    "temp_f": 49.7,
+    "code": 0,
+    "wind_mph": 7.7,
+    "wind_dir": 297,
+    "weather": "50\u00b0F \u00b7 Clear \u00b7 8 mph NW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
     "date": "2026-05-02T00:34:45",
     "file": "IMG_7368.jpg",
     "temp_f": 48.4,
@@ -625,6 +658,17 @@
     "wind_mph": 4.1,
     "wind_dir": 204,
     "weather": "48\u00b0F \u00b7 Overcast \u00b7 4 mph SW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-03T00:00:07",
+    "file": "IMG_7370.jpg",
+    "temp_f": 46.7,
+    "code": 3,
+    "wind_mph": 5.5,
+    "wind_dir": 308,
+    "weather": "47\u00b0F \u00b7 Overcast \u00b7 6 mph NW",
     "is_night": true,
     "aligned": true
   },
@@ -658,6 +702,17 @@
     "wind_mph": 15.3,
     "wind_dir": 208,
     "weather": "63\u00b0F \u00b7 Overcast \u00b7 15 mph SW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-07T01:25:16",
+    "file": "IMG_7395.jpg",
+    "temp_f": 57.7,
+    "code": 3,
+    "wind_mph": 9.2,
+    "wind_dir": 280,
+    "weather": "58\u00b0F \u00b7 Overcast \u00b7 9 mph W",
     "is_night": true,
     "aligned": true
   },
@@ -775,6 +830,17 @@
     "aligned": true
   },
   {
+    "date": "2026-05-25T10:40:03",
+    "file": "IMG_7742.jpg",
+    "temp_f": 61.3,
+    "code": 53,
+    "wind_mph": 6.3,
+    "wind_dir": 289,
+    "weather": "61\u00b0F \u00b7 Drizzle \u00b7 6 mph W",
+    "is_night": false,
+    "aligned": true
+  },
+  {
     "date": "2026-05-26T06:08:54",
     "file": "IMG_7744.jpg",
     "temp_f": 56.6,
@@ -784,6 +850,28 @@
     "weather": "57\u00b0F \u00b7 Mostly clear \u00b7 5 mph NW",
     "caption": "I'm not a morning person, so this 6am photo is a rarity. The soft morning light makes this photo one of my favourites in the whole collection.",
     "is_night": false,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-28T21:30:06",
+    "file": "IMG_7777.jpg",
+    "temp_f": 64.0,
+    "code": 51,
+    "wind_mph": 7.3,
+    "wind_dir": 354,
+    "weather": "64\u00b0F \u00b7 Light drizzle \u00b7 7 mph N",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-29T23:53:43",
+    "file": "IMG_7781.jpg",
+    "temp_f": 59.5,
+    "code": 3,
+    "wind_mph": 9.6,
+    "wind_dir": 142,
+    "weather": "60\u00b0F \u00b7 Overcast \u00b7 10 mph SE",
+    "is_night": true,
     "aligned": true
   }
 ]

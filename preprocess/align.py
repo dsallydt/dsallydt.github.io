@@ -47,6 +47,24 @@ REF_DAY = 'IMG_7744.jpg'      # clear daytime, level, full skyline -> global fra
 REF_NIGHT = 'IMG_6944.jpg'    # clear night, full skyline
 FRAME_W, FRAME_H = 1600, 1200
 
+# The day reference defines a plumb frame, but the night set is placed via a
+# cross-day/night "bridge" whose rotation carries a small systematic error
+# (feature matching can't nail sub-degree rotation across lighting). This levels
+# the whole night set onto the plumb day frame: a positive value rotates the
+# night side clockwise, about the skyline centre so the skyline stays put.
+NIGHT_LEVEL_ADJUST_DEG = 0.293
+LEVEL_PIVOT = (800.0, 480.0)  # ~skyline centre in the frame
+
+# A uniform rotation applied to the WHOLE stack (day + night) at output time, to
+# straighten the overall frame by eye. Every photo shares the common frame (so
+# they stack), but within it each photo's content is masked to the largest
+# axis-aligned rectangle inside itself and the rest padded with the background
+# colour — giving clean horizontal/vertical content edges (no rotation slant)
+# while keeping identical output dimensions so the gallery still stacks.
+GLOBAL_ROTATE_DEG = 0.2
+CROP_DOWNSAMPLE = 4           # resolution divisor for the inscribed-rect search
+CROP_MARGIN = 3               # downsampled px trimmed inward to avoid edge slivers
+
 THUMB_MAX = 600
 WEB_QUALITY = 88
 THUMB_QUALITY = 80
@@ -122,6 +140,22 @@ def _compose(outer, inner):
     o = np.vstack([outer, [0, 0, 1]])
     i = np.vstack([inner, [0, 0, 1]])
     return (o @ i)[:2]
+
+
+def _rotate_about(pivot, deg):
+    """2x3 rotation by `deg` (clockwise on screen) about a frame point."""
+    th = np.radians(deg)
+    c, s = np.cos(th), np.sin(th)
+    px, py = pivot
+    return np.float32([[c, -s, px - c * px + s * py],
+                       [s, c, py - s * px - c * py]])
+
+
+def _level_night(bridge):
+    """Apply the night-set leveling rotation on top of the raw bridge."""
+    if bridge is None or not NIGHT_LEVEL_ADJUST_DEG:
+        return bridge
+    return _compose(_rotate_about(LEVEL_PIVOT, NIGHT_LEVEL_ADJUST_DEG), bridge)
 
 
 # -----------------------------------------------------------------------------
@@ -200,19 +234,65 @@ def _rescue(feats, name, anchors):
 # -----------------------------------------------------------------------------
 # Warp + output
 # -----------------------------------------------------------------------------
-def _render(name, matrix):
-    """Warp the cached raw photo into the frame; write aligned web + thumb."""
+def _render(name, matrix, gmat):
+    """Warp the cached photo into the common frame (with the global rotation),
+    mask its content to the largest axis-aligned rectangle inside itself (straight
+    edges, no rotation slant), pad the rest with the background; write web+thumb.
+    Output stays FRAME-sized so all photos still stack."""
     img = cv2.imread(os.path.join(CACHE_WEB, name))
+    mf = np.float32(_compose(gmat, np.float32(matrix)))
     warped = cv2.warpAffine(
-        img, np.float32(matrix), (FRAME_W, FRAME_H),
+        img, mf, (FRAME_W, FRAME_H),
         flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_CONSTANT,
         borderValue=BORDER_BGR)
-    cv2.imwrite(os.path.join(WEB_DIR, name), warped,
+    content = cv2.warpAffine(
+        np.full(img.shape[:2], 255, np.uint8), mf, (FRAME_W, FRAME_H),
+        flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+    x0, y0, x1, y1 = _inscribed_rect(content)
+    out = np.full((FRAME_H, FRAME_W, 3), BORDER_BGR, np.uint8)
+    out[y0:y1, x0:x1] = warped[y0:y1, x0:x1]
+    cv2.imwrite(os.path.join(WEB_DIR, name), out,
                 [cv2.IMWRITE_JPEG_QUALITY, WEB_QUALITY])
-    th = cv2.resize(warped, (THUMB_MAX, int(FRAME_H * THUMB_MAX / FRAME_W)),
+    th = cv2.resize(out, (THUMB_MAX, round(FRAME_H * THUMB_MAX / FRAME_W)),
                     interpolation=cv2.INTER_AREA)
     cv2.imwrite(os.path.join(THUMB_DIR, name), th,
                 [cv2.IMWRITE_JPEG_QUALITY, THUMB_QUALITY])
+
+
+def _inscribed_rect(content):
+    """Largest axis-aligned rectangle of content (255) pixels, in full-res px.
+
+    Searched at 1/CROP_DOWNSAMPLE resolution and trimmed inward by CROP_MARGIN.
+    """
+    ds = CROP_DOWNSAMPLE
+    small = content[::ds, ::ds] > 0
+    x0, y0, x1, y1 = _largest_rect(small)
+    x0, y0 = x0 + CROP_MARGIN, y0 + CROP_MARGIN
+    x1, y1 = x1 - CROP_MARGIN, y1 - CROP_MARGIN
+    return x0 * ds, y0 * ds, (x1 + 1) * ds, (y1 + 1) * ds
+
+
+def _largest_rect(mask):
+    """(x0,y0,x1,y1) inclusive of the largest all-True axis-aligned rectangle."""
+    h, w = mask.shape
+    heights = [0] * w
+    best = (0, 0, 0, 0, 0)  # area, x0, y0, x1, y1
+    for y in range(h):
+        row = mask[y]
+        for x in range(w):
+            heights[x] = heights[x] + 1 if row[x] else 0
+        stack = []  # (start_index, height)
+        for x in range(w + 1):
+            cur = heights[x] if x < w else 0
+            start = x
+            while stack and stack[-1][1] > cur:
+                idx, hh = stack.pop()
+                area = hh * (x - idx)
+                if area > best[0]:
+                    best = (area, idx, y - hh + 1, x - 1, y)
+                start = idx
+            stack.append((start, cur))
+    return best[1], best[2], best[3], best[4]
 
 
 # -----------------------------------------------------------------------------
@@ -259,7 +339,8 @@ def add_alignment(entries: list[dict]) -> None:
         print('align: detecting features...')
         feats = {n: _features(os.path.join(CACHE_WEB, n)) for n in names}
 
-    bridge, bridge_src = _bridge(store, feats, names)
+    raw_bridge, bridge_src = _bridge(store, feats, names)
+    bridge = _level_night(raw_bridge)   # level the night set onto the plumb frame
 
     results = {}   # name -> dict(matrix, via, inliers, scale, angle[, locked])
     computed = set()
@@ -311,7 +392,8 @@ def add_alignment(entries: list[dict]) -> None:
     # whose cache is gone so a manual fix is never lost).
     out = {'reference_day': REF_DAY, 'reference_night': REF_NIGHT,
            'frame': [FRAME_W, FRAME_H], 'bridge_source': bridge_src,
-           'bridge_night_to_day': (bridge.tolist() if bridge is not None else None),
+           'night_level_adjust_deg': NIGHT_LEVEL_ADJUST_DEG,
+           'bridge_night_to_day': (raw_bridge.tolist() if raw_bridge is not None else None),
            'transforms': {}}
     for name in sorted(set(list(results) + list(prev))):
         if prev.get(name, {}).get('locked'):
@@ -320,15 +402,24 @@ def add_alignment(entries: list[dict]) -> None:
             out['transforms'][name] = results[name]
         elif name not in names:
             out['transforms'][name] = prev[name]
+
+    # Output framing: a uniform global rotation applied to every photo, stored
+    # separately from the per-photo transforms so it can change without
+    # recomputing matches. Each photo fills the frame and is padded with the
+    # background colour where it doesn't reach.
+    gmat = _rotate_about(LEVEL_PIVOT, GLOBAL_ROTATE_DEG)
+    out['global_rotate_deg'] = GLOBAL_ROTATE_DEG
     _save_store(out)
 
-    # Render: output missing, source changed, or transform just (re)computed.
+    # Re-render everything if the framing changed; otherwise only what's stale.
+    reframed = (store.get('global_rotate_deg') != GLOBAL_ROTATE_DEG
+                or store.get('night_level_adjust_deg') != NIGHT_LEVEL_ADJUST_DEG)
     rendered = 0
     for name in names:
         if name not in results:
             continue
-        if name in computed or not _output_fresh(name):
-            _render(name, results[name]['matrix'])
+        if reframed or name in computed or not _output_fresh(name):
+            _render(name, results[name]['matrix'], gmat)
             rendered += 1
 
     for e in entries:

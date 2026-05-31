@@ -59,8 +59,9 @@ Only new/modified photos get re-resized and re-aligned, so reruns are fast.
 Every photo is the same view (the Boston skyline over the Charles) but shot at a
 different zoom, pan, height, and tilt. `align.py` finds, per photo, a *similarity
 transform* (shift + rotate + uniform scale) that maps it onto one shared frame,
-then warps and letterboxes each photo into that frame — so the skyline lands in
-the same place in every shot and the gallery "stacks."
+warps each photo into that frame, straightens it, and pads with the background
+colour as needed — so the skyline lands in the same place in every shot and the
+gallery "stacks."
 
 **How it finds each transform.** It detects SIFT keypoints (distinctive
 corners/edges), matches them to a reference photo, and fits the transform with
@@ -81,11 +82,21 @@ whichever fit has the most inliers, composing through that neighbour. This is by
 visual similarity, not the clock, so a dark-evening photo can align via the
 true-night shots it actually resembles.
 
+**Leveling & framing (output stage).** Feature matching can't nail sub-degree
+rotation across day/night, so two knobs at the top of `align.py` clean up the
+result by eye: `NIGHT_LEVEL_ADJUST_DEG` rotates the whole night set onto the
+plumb day frame (the bridge leaves it ~0.3° off), and `GLOBAL_ROTATE_DEG` rotates
+the entire stack uniformly to straighten the overall frame. After warping, each
+photo's content is masked to the largest axis-aligned rectangle inside itself
+(so its edges are horizontal/vertical, not slanted by the rotation) and the rest
+padded with the background colour — all on the same frame, so the stack is kept.
+To re-tune, change a knob and delete `align.json` (or the output images).
+
 **`align.json`** records every photo's transform and how it was derived (`via`),
-plus the discovered bridge. Like `captions.json`, it's the source of truth: a
-transform is computed once and frozen, so the build is deterministic and reruns
-are fast. Delete a photo's entry to force a recompute; delete the whole file to
-recompute everything.
+plus the discovered bridge and the framing knobs. Like `captions.json`, it's the
+source of truth: a transform is computed once and frozen, so the build is
+deterministic and reruns are fast. Delete a photo's entry to force a recompute;
+delete the whole file to recompute everything.
 
 **If a photo still comes out misaligned.** Run the manual helper — you don't
 compute any matrix yourself, you just click the same two (or more) landmarks in
@@ -151,6 +162,6 @@ Small polish to consider when ready:
 - **Location**: coordinates are at the top of `preprocess/weather.py` (`42.36, -71.06`); `daynight.py` reuses them.
 - **Day/night cutoff**: `NIGHT_BUFFER` at the top of `preprocess/daynight.py` (default 30 min past sunset / before sunrise).
 - **Image sizes / quality**: at the top of `preprocess/photos.py` and `preprocess/align.py`.
-- **Alignment**: references, frame size, letterbox color, and matching thresholds are constants at the top of `preprocess/align.py`. To re-pick a reference, set `REF_DAY`/`REF_NIGHT` and delete `align.json`.
+- **Alignment**: references, frame size, background/letterbox color, matching thresholds, and the leveling/rotation knobs (`NIGHT_LEVEL_ADJUST_DEG`, `GLOBAL_ROTATE_DEG`) are constants at the top of `preprocess/align.py`. After changing any of them, delete `align.json` (or just the output images for the framing knobs) and rebuild. To re-pick a reference, set `REF_DAY`/`REF_NIGHT` and delete `align.json`.
 - **Grid columns**: `grid-template-columns: repeat(4, 1fr)` in `index.html`.
 - **Carousel size**: `max-width` on `.carousel` and `aspect-ratio` on `.stage`.
