@@ -5,10 +5,12 @@ import json
 import os
 import subprocess
 import sys
+from zoneinfo import ZoneInfo
 
 LATITUDE = 42.36
 LONGITUDE = -71.06
 TIMEZONE = 'America/New_York'
+TZ = ZoneInfo(TIMEZONE)
 FIELDS = ('temp_f', 'code', 'wind_mph', 'wind_dir')
 
 # WMO weather codes → human-readable labels.
@@ -37,9 +39,10 @@ def add_weather(entries: list[dict]) -> None:
     hourly = _fetch(entries[0]['date'][:10], entries[-1]['date'][:10])
 
     for e in entries:
-        dt = datetime.datetime.fromisoformat(e['date'])
-        key = dt.strftime('%Y-%m-%dT%H:00')
-        i = hourly['index'].get(key)
+        # Match in UTC: localise the photo's naive wall-clock with zoneinfo (which
+        # applies the correct DST for that date) before looking it up.
+        dt = datetime.datetime.fromisoformat(e['date']).replace(tzinfo=TZ)
+        i = hourly['index'].get(_utc_key(dt))
         if i is not None:
             e['temp_f'] = hourly['temps'][i]
             e['code'] = hourly['codes'][i]
@@ -71,9 +74,15 @@ def _fetch(start: str, end: str) -> dict:
             ['curl', '-fsSL', '--max-time', '30', url],
             capture_output=True, check=True,
         ).stdout
-        h = json.loads(raw)['hourly']
+        data = json.loads(raw)
+        # Open-Meteo's archive labels times at a fixed offset (the one in effect
+        # now), not the historical per-date one — so re-anchor each hourly time to
+        # the offset it reported and key the index in UTC, matching the photos.
+        src = datetime.timezone(datetime.timedelta(seconds=data['utc_offset_seconds']))
+        h = data['hourly']
         return {
-            'index': {t: i for i, t in enumerate(h['time'])},
+            'index': {_utc_key(datetime.datetime.fromisoformat(t).replace(tzinfo=src)): i
+                      for i, t in enumerate(h['time'])},
             'temps': h['temperature_2m'],
             'codes': h['weather_code'],
             'winds': h['wind_speed_10m'],
@@ -83,6 +92,11 @@ def _fetch(start: str, end: str) -> dict:
         print(f'warning: weather fetch failed ({e}); keeping any existing weather data',
               file=sys.stderr)
         return {'index': {}, 'temps': [], 'codes': [], 'winds': [], 'wdirs': []}
+
+
+def _utc_key(aware: datetime.datetime) -> str:
+    """Hour-resolution UTC key, used to match a photo to its hourly weather."""
+    return aware.astimezone(datetime.timezone.utc).strftime('%Y-%m-%dT%H:00')
 
 
 def _format(entry: dict) -> str:

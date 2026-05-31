@@ -11,6 +11,7 @@ from preprocess.photos import discover
 from preprocess.weather import add_weather
 from preprocess.captions import add_captions
 from preprocess.daynight import add_daynight
+from preprocess.align import add_alignment
 
 
 def main() -> None:
@@ -18,6 +19,7 @@ def main() -> None:
     add_weather(entries)
     add_captions(entries)
     add_daynight(entries)
+    add_alignment(entries)
 
     with open('manifest.json', 'w') as f:
         json.dump(entries, f, indent=2)

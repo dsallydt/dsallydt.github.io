@@ -7,18 +7,20 @@ Live at https://dsallydt.github.io/
 ## Adding new photos
 
 1. Drop new photos into `photos/` (any case of `.jpg` / `.JPG`).
-2. Run the build:
+2. Run the build (uses the project virtualenv — see [Requirements](#requirements)):
    ```
-   ./build.py
+   .venv/bin/python build.py
    ```
 3. Commit and push:
    ```
-   git add images/ manifest.json
+   git add images/ manifest.json align.json
    git commit -m "Add photos"
    git push
    ```
 
-GitHub Pages picks it up automatically.
+GitHub Pages picks it up automatically. New photos are aligned to the existing
+skyline frame automatically; the build prints how many aligned and flags any it
+couldn't (see [Aligning photos](#aligning-photos)).
 
 ## Adding a manual caption
 
@@ -37,23 +39,79 @@ Re-run `./build.py` and the caption appears below the date/weather line in itali
 
 `build.py` is a thin orchestrator that runs each step in `preprocess/`:
 
-- `preprocess/photos.py` — discovers photos in `photos/`, resizes each into `images/web/` (1600px, used by the carousel) and `images/thumb/` (600px, for the grid), and reads each photo's EXIF creation date via `sips`.
+- `preprocess/photos.py` — discovers photos in `photos/`, resizes each into a high-quality intermediate in `.cache/web/` (1600px, gitignored), and reads each photo's EXIF creation date via `sips`.
 - `preprocess/weather.py` — fetches hourly historical weather for the full date range from [Open-Meteo](https://open-meteo.com/) (free, no API key) in a single request, and merges temperature, condition, and wind into each entry. If the fetch fails, existing weather already in `manifest.json` is preserved.
 - `preprocess/captions.py` — merges entries from `captions.json` into the manifest.
+- `preprocess/daynight.py` — flags each photo day or night using that date's real sunrise/sunset from Open-Meteo (night = 30 min after sunset to 30 min before sunrise). This drives the site title ("N Nights on the Charles").
+- `preprocess/align.py` — aligns every photo onto a common skyline frame and writes the final `images/web/` (1600px, carousel) and `images/thumb/` (600px, grid) that the site serves. See [Aligning photos](#aligning-photos).
 
 The final `manifest.json` is what the page reads.
 
-Only new/modified photos get re-resized, so reruns are fast.
+Only new/modified photos get re-resized and re-aligned, so reruns are fast.
 
 ### Adding a new preprocessing step
 
 1. Write a function in a new file under `preprocess/` that takes `entries: list[dict]` and mutates it in place (or returns a new list).
 2. Call it from `build.py`'s `main()`.
 
+## Aligning photos
+
+Every photo is the same view (the Boston skyline over the Charles) but shot at a
+different zoom, pan, height, and tilt. `align.py` finds, per photo, a *similarity
+transform* (shift + rotate + uniform scale) that maps it onto one shared frame,
+then warps and letterboxes each photo into that frame — so the skyline lands in
+the same place in every shot and the gallery "stacks."
+
+**How it finds each transform.** It detects SIFT keypoints (distinctive
+corners/edges), matches them to a reference photo, and fits the transform with
+RANSAC (which discards bad matches). Matching is appearance-based, so it only
+works between photos in *similar* light — a sunlit building and the same building
+at night don't look alike to the matcher. So there are **two references**, one
+day (`IMG_7744.jpg`) and one night (`IMG_6944.jpg`), and each photo aligns to
+whichever it matches better.
+
+The two references share one coordinate frame via a **bridge**: a twilight photo
+that matches *both* (lit windows like the night shots, visible structure like the
+day shots) links them automatically. The day reference defines the global frame.
+
+If a photo matches the references only *weakly* (or not at all) — common for
+"tweener" shots like a dark winter evening that's neither clearly day nor night —
+a **rescue pass** matches it against the already well-aligned photos and keeps
+whichever fit has the most inliers, composing through that neighbour. This is by
+visual similarity, not the clock, so a dark-evening photo can align via the
+true-night shots it actually resembles.
+
+**`align.json`** records every photo's transform and how it was derived (`via`),
+plus the discovered bridge. Like `captions.json`, it's the source of truth: a
+transform is computed once and frozen, so the build is deterministic and reruns
+are fast. Delete a photo's entry to force a recompute; delete the whole file to
+recompute everything.
+
+**If a photo still comes out misaligned.** Run the manual helper — you don't
+compute any matrix yourself, you just click the same two (or more) landmarks in
+the photo and in the reference (e.g. the tops of the Prudential and 200
+Clarendon), and it solves for the transform and locks it in:
+
+```
+.venv/bin/python preprocess/align_manual.py IMG_1234.jpg
+```
+
+Pick landmarks far apart and easy to spot in both; more points give a sturdier
+fit. This writes a `"locked": true` entry into `align.json` and re-renders that
+photo immediately. Locked entries are never recomputed, so the fix survives every
+future build. (You can also hand-edit a locked entry's matrix in `align.json` if
+you ever need to, but clicking is far easier.)
+
 ## Requirements
 
 - macOS (uses `sips` for image resizing and EXIF dates)
 - `python3` 3.9+
+- [`uv`](https://docs.astral.sh/uv/) for the Python environment. One-time setup:
+  ```
+  uv venv
+  uv pip install -r requirements.txt   # opencv-python + numpy, for align.py
+  ```
+  Then run the build with the venv's Python: `.venv/bin/python build.py`.
 - `curl` (used to fetch weather data)
 - Internet access at build time (for the weather fetch); the site itself is fully static.
 
@@ -70,10 +128,14 @@ Only new/modified photos get re-resized, so reruns are fast.
 - `app.js` — carousel + grid behavior (loaded only on the gallery page)
 - `build.py` — orchestrator; regenerates `images/` and `manifest.json` from `photos/`
 - `preprocess/` — individual preprocessing modules
+- `preprocess/align_manual.py` — helper to hand-fix one photo's alignment by clicking landmarks (see [Aligning photos](#aligning-photos))
 - `captions.json` — optional manual captions, keyed by filename
+- `align.json` — generated; per-photo alignment transforms (editable to fix or lock a photo — see [Aligning photos](#aligning-photos))
 - `manifest.json` — generated; do not edit by hand
+- `requirements.txt` — Python deps for the build (`opencv-python`, `numpy`)
 - `photos/` — original photos (gitignored)
-- `images/web/`, `images/thumb/` — generated, committed
+- `.cache/web/` — resized originals, alignment input (gitignored)
+- `images/web/`, `images/thumb/` — generated (aligned), committed
 
 ## Future ideas
 
@@ -83,11 +145,12 @@ Small polish to consider when ready:
 - **Favicon.** The small icon in the browser tab and bookmarks. Drop a `favicon.png` (256×256 is plenty) at the project root and add `<link rel="icon" href="favicon.png">` to `<head>`.
 - **Permalink to a specific photo.** Today the URL is the same no matter which photo you're viewing. Could use `#62` (or `#2026-05-16`) so you can share a particular shot.
 - **Lightbox** on grid click instead of jumping to the carousel — bigger view without scrolling.
-- **Sun position / golden-hour flag** in the caption — Open-Meteo has it in the same archive endpoint, so it'd be a small addition to `preprocess/weather.py` (or a new `preprocess/sun.py`).
 
 ## Tweaking
 
-- **Location**: coordinates are at the top of `preprocess/weather.py` (`42.36, -71.06`).
-- **Image sizes / quality**: at the top of `preprocess/photos.py`.
+- **Location**: coordinates are at the top of `preprocess/weather.py` (`42.36, -71.06`); `daynight.py` reuses them.
+- **Day/night cutoff**: `NIGHT_BUFFER` at the top of `preprocess/daynight.py` (default 30 min past sunset / before sunrise).
+- **Image sizes / quality**: at the top of `preprocess/photos.py` and `preprocess/align.py`.
+- **Alignment**: references, frame size, letterbox color, and matching thresholds are constants at the top of `preprocess/align.py`. To re-pick a reference, set `REF_DAY`/`REF_NIGHT` and delete `align.json`.
 - **Grid columns**: `grid-template-columns: repeat(4, 1fr)` in `index.html`.
 - **Carousel size**: `max-width` on `.carousel` and `aspect-ratio` on `.stage`.

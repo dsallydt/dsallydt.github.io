@@ -8,254 +8,279 @@
     "wind_dir": 348,
     "weather": "55\u00b0F \u00b7 Light drizzle \u00b7 calm",
     "caption": "The first photo I took on the bridge, before I knew I wanted to start this project.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-07T20:23:35",
     "file": "IMG_6823.jpg",
-    "temp_f": 34.6,
+    "temp_f": 34.1,
     "code": 0,
-    "wind_mph": 6.9,
-    "wind_dir": 270,
-    "weather": "35\u00b0F \u00b7 Clear \u00b7 7 mph W",
+    "wind_mph": 7.5,
+    "wind_dir": 280,
+    "weather": "34\u00b0F \u00b7 Clear \u00b7 8 mph W",
     "caption": "At the start of 2026, I decided to start this photography project.\nOn this day, the temperature was mild after a deep freeze the week prior, so the ice was half melted into this particularly unique texture.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-10T23:57:34",
     "file": "IMG_6836.jpg",
-    "temp_f": 39.9,
-    "code": 61,
-    "wind_mph": 10.9,
-    "wind_dir": 104,
-    "weather": "40\u00b0F \u00b7 Light rain \u00b7 11 mph E",
+    "temp_f": 39.6,
+    "code": 63,
+    "wind_mph": 11.3,
+    "wind_dir": 101,
+    "weather": "40\u00b0F \u00b7 Rain \u00b7 11 mph E",
     "caption": "The river surface was glassy and close to melting after few days of mild temperatures.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-11T16:52:33",
     "file": "IMG_6839.jpg",
-    "temp_f": 44.4,
-    "code": 1,
-    "wind_mph": 4.2,
-    "wind_dir": 284,
-    "weather": "44\u00b0F \u00b7 Mostly clear \u00b7 4 mph W",
-    "is_night": false
+    "temp_f": 42.1,
+    "code": 0,
+    "wind_mph": 6.9,
+    "wind_dir": 277,
+    "weather": "42\u00b0F \u00b7 Clear \u00b7 7 mph W",
+    "is_night": false,
+    "aligned": true
   },
   {
     "date": "2026-01-21T19:47:28",
     "file": "IMG_6875.jpg",
-    "temp_f": 24.5,
-    "code": 3,
-    "wind_mph": 9.8,
-    "wind_dir": 195,
-    "weather": "24\u00b0F \u00b7 Overcast \u00b7 10 mph S",
+    "temp_f": 25.9,
+    "code": 71,
+    "wind_mph": 10.4,
+    "wind_dir": 201,
+    "weather": "26\u00b0F \u00b7 Light snow \u00b7 10 mph S",
     "caption": "On the left, the river surface was covered in ice sheets showing cracks; on the right, the surface had been water during the day, and the thinnest layer of matte frost appeared at night.",
-    "is_night": false
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-26T20:47:43",
     "file": "IMG_6899.jpg",
-    "temp_f": 17.8,
+    "temp_f": 17.7,
     "code": 73,
-    "wind_mph": 11.5,
-    "wind_dir": 319,
-    "weather": "18\u00b0F \u00b7 Snow \u00b7 12 mph NW",
-    "is_night": true
+    "wind_mph": 10.4,
+    "wind_dir": 318,
+    "weather": "18\u00b0F \u00b7 Snow \u00b7 10 mph NW",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-27T23:41:19",
     "file": "IMG_6911.jpg",
-    "temp_f": 13.9,
+    "temp_f": 11.9,
     "code": 0,
-    "wind_mph": 10.4,
-    "wind_dir": 283,
-    "weather": "14\u00b0F \u00b7 Clear \u00b7 10 mph W",
-    "is_night": true
+    "wind_mph": 9.7,
+    "wind_dir": 284,
+    "weather": "12\u00b0F \u00b7 Clear \u00b7 10 mph W",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-01-28T22:59:11",
     "file": "IMG_6914.jpg",
-    "temp_f": 12.5,
+    "temp_f": 11.8,
     "code": 3,
-    "wind_mph": 6.4,
-    "wind_dir": 290,
-    "weather": "12\u00b0F \u00b7 Overcast \u00b7 6 mph W",
-    "is_night": true
+    "wind_mph": 6.2,
+    "wind_dir": 298,
+    "weather": "12\u00b0F \u00b7 Overcast \u00b7 6 mph NW",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-02T22:53:12",
     "file": "IMG_6944.jpg",
-    "temp_f": 21.0,
+    "temp_f": 19.7,
     "code": 0,
-    "wind_mph": 9.0,
-    "wind_dir": 316,
-    "weather": "21\u00b0F \u00b7 Clear \u00b7 9 mph NW",
-    "is_night": true
+    "wind_mph": 8.5,
+    "wind_dir": 315,
+    "weather": "20\u00b0F \u00b7 Clear \u00b7 8 mph NW",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-03T20:11:37",
     "file": "IMG_6948.jpg",
-    "temp_f": 19.6,
+    "temp_f": 18.4,
     "code": 0,
-    "wind_mph": 6.2,
-    "wind_dir": 216,
-    "weather": "20\u00b0F \u00b7 Clear \u00b7 6 mph SW",
-    "is_night": true
+    "wind_mph": 6.4,
+    "wind_dir": 247,
+    "weather": "18\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-06T17:36:30",
     "file": "IMG_6955.jpg",
-    "temp_f": 27.9,
-    "code": 3,
-    "wind_mph": 4.2,
-    "wind_dir": 32,
-    "weather": "28\u00b0F \u00b7 Overcast \u00b7 4 mph NE",
-    "is_night": false
+    "temp_f": 26.4,
+    "code": 2,
+    "wind_mph": 5.5,
+    "wind_dir": 21,
+    "weather": "26\u00b0F \u00b7 Partly cloudy \u00b7 6 mph N",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-08T21:45:26",
     "file": "IMG_6977.jpg",
-    "temp_f": 9.8,
-    "code": 3,
-    "wind_mph": 15.0,
-    "wind_dir": 322,
-    "weather": "10\u00b0F \u00b7 Overcast \u00b7 15 mph NW",
+    "temp_f": 8.5,
+    "code": 0,
+    "wind_mph": 14.5,
+    "wind_dir": 321,
+    "weather": "8\u00b0F \u00b7 Clear \u00b7 14 mph NW",
     "caption": "Superbowl weekend, Seahawks vs Patriots. The Prudential Tower cheered the team on. (They lost.)",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-10T23:55:20",
     "file": "IMG_6982.jpg",
-    "temp_f": 28.7,
+    "temp_f": 29.0,
     "code": 73,
-    "wind_mph": 7.3,
-    "wind_dir": 196,
-    "weather": "29\u00b0F \u00b7 Snow \u00b7 7 mph S",
+    "wind_mph": 8.3,
+    "wind_dir": 186,
+    "weather": "29\u00b0F \u00b7 Snow \u00b7 8 mph S",
     "caption": "A peaceful night of fresh snow.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-12T22:17:00",
     "file": "IMG_6984.jpg",
-    "temp_f": 24.6,
+    "temp_f": 23.3,
     "code": 3,
-    "wind_mph": 10.8,
-    "wind_dir": 314,
-    "weather": "25\u00b0F \u00b7 Overcast \u00b7 11 mph NW",
+    "wind_mph": 10.9,
+    "wind_dir": 317,
+    "weather": "23\u00b0F \u00b7 Overcast \u00b7 11 mph NW",
     "caption": "Footsteps on the ice! I would not be so brave.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-13T20:25:59",
     "file": "IMG_6988.jpg",
-    "temp_f": 24.5,
-    "code": 0,
-    "wind_mph": 7.8,
-    "wind_dir": 252,
-    "weather": "24\u00b0F \u00b7 Clear \u00b7 8 mph W",
-    "is_night": true
+    "temp_f": 25.6,
+    "code": 3,
+    "wind_mph": 8.1,
+    "wind_dir": 261,
+    "weather": "26\u00b0F \u00b7 Overcast \u00b7 8 mph W",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-16T22:56:57",
     "file": "IMG_7012.jpg",
-    "temp_f": 25.1,
+    "temp_f": 22.5,
     "code": 0,
-    "wind_mph": 2.8,
-    "wind_dir": 337,
-    "weather": "25\u00b0F \u00b7 Clear \u00b7 calm",
-    "is_night": true
+    "wind_mph": 2.0,
+    "wind_dir": 341,
+    "weather": "22\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-17T20:07:43",
     "file": "IMG_7016.jpg",
-    "temp_f": 35.0,
-    "code": 3,
-    "wind_mph": 5.5,
-    "wind_dir": 215,
-    "weather": "35\u00b0F \u00b7 Overcast \u00b7 6 mph SW",
-    "is_night": true
+    "temp_f": 35.5,
+    "code": 1,
+    "wind_mph": 6.6,
+    "wind_dir": 230,
+    "weather": "36\u00b0F \u00b7 Mostly clear \u00b7 7 mph SW",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-18T19:01:21",
     "file": "IMG_7018.jpg",
-    "temp_f": 35.7,
-    "code": 51,
-    "wind_mph": 1.9,
-    "wind_dir": 280,
-    "weather": "36\u00b0F \u00b7 Light drizzle \u00b7 calm",
+    "temp_f": 36.5,
+    "code": 3,
+    "wind_mph": 4.6,
+    "wind_dir": 311,
+    "weather": "36\u00b0F \u00b7 Overcast \u00b7 5 mph NW",
     "caption": "A few balmy days and the river wanted to melt again.",
-    "is_night": false
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-19T17:34:47",
     "file": "IMG_7020.jpg",
-    "temp_f": 33.6,
+    "temp_f": 29.1,
     "code": 3,
-    "wind_mph": 2.8,
-    "wind_dir": 85,
-    "weather": "34\u00b0F \u00b7 Overcast \u00b7 calm",
-    "is_night": false
+    "wind_mph": 3.2,
+    "wind_dir": 102,
+    "weather": "29\u00b0F \u00b7 Overcast \u00b7 calm",
+    "is_night": false,
+    "aligned": true
   },
   {
     "date": "2026-02-19T23:11:06",
     "file": "IMG_7023.jpg",
-    "temp_f": 30.8,
+    "temp_f": 31.8,
     "code": 3,
-    "wind_mph": 6.0,
-    "wind_dir": 177,
-    "weather": "31\u00b0F \u00b7 Overcast \u00b7 6 mph S",
-    "is_night": true
+    "wind_mph": 4.5,
+    "wind_dir": 180,
+    "weather": "32\u00b0F \u00b7 Overcast \u00b7 4 mph S",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-20T22:12:17",
     "file": "IMG_7025.jpg",
-    "temp_f": 33.1,
-    "code": 73,
-    "wind_mph": 10.3,
-    "wind_dir": 65,
-    "weather": "33\u00b0F \u00b7 Snow \u00b7 10 mph NE",
-    "is_night": true
+    "temp_f": 33.0,
+    "code": 71,
+    "wind_mph": 8.2,
+    "wind_dir": 42,
+    "weather": "33\u00b0F \u00b7 Light snow \u00b7 8 mph NE",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-02-21T18:05:44",
     "file": "IMG_7026.jpg",
-    "temp_f": 28.0,
+    "temp_f": 28.1,
     "code": 3,
-    "wind_mph": 1.1,
+    "wind_mph": 2.1,
     "wind_dir": 90,
     "weather": "28\u00b0F \u00b7 Overcast \u00b7 calm",
-    "is_night": false
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-03T22:53:00",
     "file": "IMG_7083.jpg",
-    "temp_f": 32.3,
-    "code": 61,
-    "wind_mph": 4.1,
-    "wind_dir": 125,
-    "weather": "32\u00b0F \u00b7 Light rain \u00b7 4 mph SE",
-    "is_night": true
+    "temp_f": 32.4,
+    "code": 53,
+    "wind_mph": 1.3,
+    "wind_dir": 315,
+    "weather": "32\u00b0F \u00b7 Drizzle \u00b7 calm",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-04T23:41:26",
     "file": "IMG_7087.jpg",
-    "temp_f": 34.0,
+    "temp_f": 33.0,
     "code": 0,
-    "wind_mph": 6.7,
-    "wind_dir": 252,
-    "weather": "34\u00b0F \u00b7 Clear \u00b7 7 mph W",
-    "is_night": true
+    "wind_mph": 6.3,
+    "wind_dir": 265,
+    "weather": "33\u00b0F \u00b7 Clear \u00b7 6 mph W",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-05T23:39:44",
     "file": "IMG_7090.jpg",
-    "temp_f": 34.3,
-    "code": 71,
-    "wind_mph": 13.4,
-    "wind_dir": 53,
-    "weather": "34\u00b0F \u00b7 Light snow \u00b7 13 mph NE",
-    "is_night": true
+    "temp_f": 33.6,
+    "code": 75,
+    "wind_mph": 13.8,
+    "wind_dir": 58,
+    "weather": "34\u00b0F \u00b7 Heavy snow \u00b7 14 mph NE",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-09T22:27:52",
@@ -266,7 +291,8 @@
     "wind_dir": 225,
     "weather": "48\u00b0F \u00b7 Clear \u00b7 10 mph SW",
     "caption": "Over the next four days, the ice melted for good for the season.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-10T22:38:43",
@@ -277,7 +303,8 @@
     "wind_dir": 242,
     "weather": "56\u00b0F \u00b7 Clear \u00b7 6 mph SW",
     "caption": "As the ice turned into slush, the river stopped reflecting light. The night looked ominous.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-11T22:30:55",
@@ -287,7 +314,8 @@
     "wind_mph": 14.4,
     "wind_dir": 196,
     "weather": "58\u00b0F \u00b7 Overcast \u00b7 14 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-12T20:17:00",
@@ -297,7 +325,8 @@
     "wind_mph": 6.6,
     "wind_dir": 255,
     "weather": "36\u00b0F \u00b7 Light snow \u00b7 7 mph W",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-16T22:42:15",
@@ -307,7 +336,8 @@
     "wind_mph": 20.2,
     "wind_dir": 191,
     "weather": "58\u00b0F \u00b7 Rain \u00b7 20 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-17T19:28:44",
@@ -317,7 +347,8 @@
     "wind_mph": 13.3,
     "wind_dir": 269,
     "weather": "34\u00b0F \u00b7 Clear \u00b7 13 mph W",
-    "is_night": false
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-03-26T20:37:52",
@@ -327,7 +358,8 @@
     "wind_mph": 10.9,
     "wind_dir": 199,
     "weather": "56\u00b0F \u00b7 Overcast \u00b7 11 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-07T22:58:39",
@@ -337,7 +369,8 @@
     "wind_mph": 11.8,
     "wind_dir": 296,
     "weather": "36\u00b0F \u00b7 Clear \u00b7 12 mph NW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-08T21:37:48",
@@ -347,7 +380,8 @@
     "wind_mph": 6.0,
     "wind_dir": 152,
     "weather": "35\u00b0F \u00b7 Clear \u00b7 6 mph SE",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-09T20:52:23",
@@ -357,7 +391,8 @@
     "wind_mph": 10.3,
     "wind_dir": 187,
     "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 10 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-10T22:35:51",
@@ -367,7 +402,8 @@
     "wind_mph": 12.2,
     "wind_dir": 221,
     "weather": "51\u00b0F \u00b7 Overcast \u00b7 12 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-11T11:39:35",
@@ -377,7 +413,9 @@
     "wind_mph": 11.9,
     "wind_dir": 326,
     "weather": "53\u00b0F \u00b7 Clear \u00b7 12 mph NW",
-    "is_night": false
+    "caption": "I took this photo walking to work. It was the first day when the weather felt like spring.",
+    "is_night": false,
+    "aligned": true
   },
   {
     "date": "2026-04-12T23:18:48",
@@ -387,7 +425,8 @@
     "wind_mph": 7.7,
     "wind_dir": 196,
     "weather": "44\u00b0F \u00b7 Overcast \u00b7 8 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-13T23:13:57",
@@ -397,7 +436,8 @@
     "wind_mph": 9.6,
     "wind_dir": 248,
     "weather": "63\u00b0F \u00b7 Clear \u00b7 10 mph W",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-14T23:45:36",
@@ -407,7 +447,8 @@
     "wind_mph": 8.6,
     "wind_dir": 222,
     "weather": "63\u00b0F \u00b7 Overcast \u00b7 9 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-15T23:16:49",
@@ -417,7 +458,8 @@
     "wind_mph": 3.0,
     "wind_dir": 45,
     "weather": "49\u00b0F \u00b7 Overcast \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-16T21:55:02",
@@ -427,7 +469,8 @@
     "wind_mph": 3.8,
     "wind_dir": 87,
     "weather": "55\u00b0F \u00b7 Overcast \u00b7 4 mph E",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-17T22:17:30",
@@ -438,7 +481,8 @@
     "wind_dir": 72,
     "weather": "49\u00b0F \u00b7 Clear \u00b7 calm",
     "caption": "A completely still night. A goose makes an appearance.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-19T21:55:48",
@@ -448,7 +492,8 @@
     "wind_mph": 9.7,
     "wind_dir": 289,
     "weather": "39\u00b0F \u00b7 Mostly clear \u00b7 10 mph W",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-20T23:43:45",
@@ -458,7 +503,8 @@
     "wind_mph": 7.3,
     "wind_dir": 2,
     "weather": "40\u00b0F \u00b7 Overcast \u00b7 7 mph N",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-22T00:11:11",
@@ -468,7 +514,8 @@
     "wind_mph": 7.8,
     "wind_dir": 207,
     "weather": "38\u00b0F \u00b7 Partly cloudy \u00b7 8 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-22T23:23:04",
@@ -478,7 +525,8 @@
     "wind_mph": 3.9,
     "wind_dir": 175,
     "weather": "42\u00b0F \u00b7 Mostly clear \u00b7 4 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-23T22:12:58",
@@ -488,7 +536,8 @@
     "wind_mph": 6.1,
     "wind_dir": 95,
     "weather": "45\u00b0F \u00b7 Clear \u00b7 6 mph E",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-25T00:45:10",
@@ -498,7 +547,8 @@
     "wind_mph": 1.7,
     "wind_dir": 200,
     "weather": "40\u00b0F \u00b7 Mostly clear \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-26T00:03:30",
@@ -508,7 +558,8 @@
     "wind_mph": 4.4,
     "wind_dir": 241,
     "weather": "44\u00b0F \u00b7 Overcast \u00b7 4 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-26T18:44:31",
@@ -519,7 +570,8 @@
     "wind_dir": 97,
     "weather": "56\u00b0F \u00b7 Clear \u00b7 4 mph E",
     "caption": "I like the way the water ripples distort the reflection of the prudential center on the right.",
-    "is_night": false
+    "is_night": false,
+    "aligned": true
   },
   {
     "date": "2026-04-26T23:58:34",
@@ -529,7 +581,8 @@
     "wind_mph": 0.3,
     "wind_dir": 270,
     "weather": "48\u00b0F \u00b7 Overcast \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-28T00:17:57",
@@ -539,7 +592,8 @@
     "wind_mph": 1.4,
     "wind_dir": 125,
     "weather": "47\u00b0F \u00b7 Clear \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-28T23:47:18",
@@ -549,7 +603,8 @@
     "wind_mph": 8.0,
     "wind_dir": 75,
     "weather": "45\u00b0F \u00b7 Overcast \u00b7 8 mph E",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-04-30T00:16:01",
@@ -559,7 +614,8 @@
     "wind_mph": 4.1,
     "wind_dir": 64,
     "weather": "46\u00b0F \u00b7 Overcast \u00b7 4 mph NE",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-02T00:34:45",
@@ -569,7 +625,8 @@
     "wind_mph": 4.1,
     "wind_dir": 204,
     "weather": "48\u00b0F \u00b7 Overcast \u00b7 4 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-04T00:04:34",
@@ -579,7 +636,8 @@
     "wind_mph": 6.4,
     "wind_dir": 244,
     "weather": "44\u00b0F \u00b7 Clear \u00b7 6 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-04T23:12:00",
@@ -589,7 +647,8 @@
     "wind_mph": 12.0,
     "wind_dir": 211,
     "weather": "56\u00b0F \u00b7 Overcast \u00b7 12 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-06T00:10:02",
@@ -599,7 +658,8 @@
     "wind_mph": 15.3,
     "wind_dir": 208,
     "weather": "63\u00b0F \u00b7 Overcast \u00b7 15 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-09T00:23:41",
@@ -609,7 +669,8 @@
     "wind_mph": 4.3,
     "wind_dir": 249,
     "weather": "48\u00b0F \u00b7 Clear \u00b7 4 mph W",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-11T23:30:56",
@@ -619,7 +680,8 @@
     "wind_mph": 6.0,
     "wind_dir": 323,
     "weather": "51\u00b0F \u00b7 Clear \u00b7 6 mph NW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-13T00:49:54",
@@ -629,7 +691,8 @@
     "wind_mph": 0.5,
     "wind_dir": 45,
     "weather": "52\u00b0F \u00b7 Overcast \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-14T01:03:08",
@@ -639,7 +702,8 @@
     "wind_mph": 8.4,
     "wind_dir": 169,
     "weather": "55\u00b0F \u00b7 Overcast \u00b7 8 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-15T00:53:13",
@@ -650,7 +714,8 @@
     "wind_dir": 319,
     "weather": "51\u00b0F \u00b7 Overcast \u00b7 calm",
     "caption": "An eerily calm night with high contrast.",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-15T23:01:48",
@@ -660,7 +725,8 @@
     "wind_mph": 2.4,
     "wind_dir": 254,
     "weather": "51\u00b0F \u00b7 Clear \u00b7 calm",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-16T17:20:10",
@@ -671,7 +737,8 @@
     "wind_dir": 230,
     "weather": "75\u00b0F \u00b7 Clear \u00b7 12 mph SW",
     "caption": "Look closely: a sailboat tipped over in front of the Hancock tower. Help is on site.",
-    "is_night": false
+    "is_night": false,
+    "aligned": true
   },
   {
     "date": "2026-05-17T00:18:19",
@@ -681,7 +748,8 @@
     "wind_mph": 11.7,
     "wind_dir": 217,
     "weather": "62\u00b0F \u00b7 Partly cloudy \u00b7 12 mph SW",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-24T01:03:16",
@@ -691,7 +759,8 @@
     "wind_mph": 3.6,
     "wind_dir": 169,
     "weather": "54\u00b0F \u00b7 Light drizzle \u00b7 4 mph S",
-    "is_night": true
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-25T00:38:08",
@@ -701,8 +770,9 @@
     "wind_mph": 7.0,
     "wind_dir": 81,
     "weather": "54\u00b0F \u00b7 Overcast \u00b7 7 mph E",
-    "caption": "It was raining, and the fog was atmospheric. In the distance to the right of the photo was a thunderstorm. The white horizon was illuminated by the storm and lightning.",
-    "is_night": true
+    "caption": "It was raining in this photo, and the fog was atmospheric. To the right of the photo in the distance was a thunderstorm. The horizon was illuminated white by the storm and lightning.",
+    "is_night": true,
+    "aligned": true
   },
   {
     "date": "2026-05-26T06:08:54",
@@ -712,6 +782,8 @@
     "wind_mph": 4.7,
     "wind_dir": 312,
     "weather": "57\u00b0F \u00b7 Mostly clear \u00b7 5 mph NW",
-    "is_night": false
+    "caption": "I'm not a morning person, so this 6am photo is a rarity. The soft morning light makes this photo one of my favourites in the whole collection.",
+    "is_night": false,
+    "aligned": true
   }
 ]

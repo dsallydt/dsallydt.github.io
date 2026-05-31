@@ -1,25 +1,28 @@
-"""Discover photos in photos/, resize them, and extract creation dates."""
+"""Discover photos in photos/, resize them into a cache, and extract dates.
+
+Resizing produces a high-quality intermediate in `.cache/web/` (gitignored).
+The later `align.py` step is what writes the final, aligned `images/web/` and
+`images/thumb/` that the site serves. Keeping the raw resize separate means a
+rerun re-aligns from the untouched original, never from an already-aligned
+image (which would compound the warp).
+"""
 
 import os
 import re
 import subprocess
 
 PHOTOS_DIR = 'photos'
-WEB_DIR = 'images/web'
-THUMB_DIR = 'images/thumb'
+CACHE_WEB = '.cache/web'   # raw resized originals; alignment input (gitignored)
 WEB_MAX = 1600
-THUMB_MAX = 600
-WEB_QUALITY = 85
-THUMB_QUALITY = 80
+CACHE_QUALITY = 95         # high: this is re-encoded once more after warping
 
 
 def discover() -> list[dict]:
     """Return chronologically-sorted entries `[{date, file}, ...]`.
 
-    Re-resizes any photo whose web/thumb output is missing or stale.
+    Re-resizes any photo whose cached output is missing or stale.
     """
-    os.makedirs(WEB_DIR, exist_ok=True)
-    os.makedirs(THUMB_DIR, exist_ok=True)
+    os.makedirs(CACHE_WEB, exist_ok=True)
 
     entries = []
     for name in sorted(os.listdir(PHOTOS_DIR)):
@@ -31,8 +34,7 @@ def discover() -> list[dict]:
             print(f'skip (no date): {path}')
             continue
         out_name = os.path.splitext(name)[0] + '.jpg'
-        _ensure_resized(path, os.path.join(WEB_DIR, out_name), WEB_MAX, WEB_QUALITY)
-        _ensure_resized(path, os.path.join(THUMB_DIR, out_name), THUMB_MAX, THUMB_QUALITY)
+        _ensure_resized(path, os.path.join(CACHE_WEB, out_name), WEB_MAX, CACHE_QUALITY)
         entries.append({'date': date, 'file': out_name})
 
     entries.sort(key=lambda e: e['date'])
