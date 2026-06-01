@@ -1427,5 +1427,11 @@
       "angle": 0.054
     }
   },
-  "global_rotate_deg": 0.2
+  "global_rotate_deg": 0.2,
+  "thumb_crop": [
+    156,
+    120,
+    1468,
+    1096
+  ]
 }

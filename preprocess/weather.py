@@ -59,27 +59,45 @@ def add_weather(entries: list[dict]) -> None:
             e['weather'] = display
 
 
-def _fetch(start: str, end: str) -> dict:
+def _fetch_archive(start: str, end: str, params: str) -> dict:
+    """Fetch from Open-Meteo's archive API and return the parsed JSON.
+
+    `params` is the data-selection query — e.g. 'hourly=temperature_2m,...' or
+    'daily=sunrise,sunset'. Raises on network/parse failure; callers fall back.
+    Shared with daynight.py so the URL, curl call, and offset handling live here.
+    """
     url = (
         'https://archive-api.open-meteo.com/v1/archive'
         f'?latitude={LATITUDE}&longitude={LONGITUDE}'
         f'&start_date={start}&end_date={end}'
-        '&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m'
-        '&temperature_unit=fahrenheit'
-        '&wind_speed_unit=mph'
+        f'&{params}'
         f'&timezone={TIMEZONE}'
     )
+    raw = subprocess.run(
+        ['curl', '-fsSL', '--max-time', '30', url],
+        capture_output=True, check=True,
+    ).stdout
+    return json.loads(raw)
+
+
+def _reported_offset(data: dict) -> datetime.timezone:
+    """The fixed UTC offset Open-Meteo labeled its times with.
+
+    The archive labels every time at the offset in effect *now*, not the
+    historical per-date one — re-anchor reported times to this, then convert
+    with zoneinfo for the DST-correct wall-clock.
+    """
+    return datetime.timezone(datetime.timedelta(seconds=data['utc_offset_seconds']))
+
+
+def _fetch(start: str, end: str) -> dict:
     try:
-        raw = subprocess.run(
-            ['curl', '-fsSL', '--max-time', '30', url],
-            capture_output=True, check=True,
-        ).stdout
-        data = json.loads(raw)
-        # Open-Meteo's archive labels times at a fixed offset (the one in effect
-        # now), not the historical per-date one — so re-anchor each hourly time to
-        # the offset it reported and key the index in UTC, matching the photos.
-        src = datetime.timezone(datetime.timedelta(seconds=data['utc_offset_seconds']))
+        data = _fetch_archive(
+            start, end,
+            'hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m'
+            '&temperature_unit=fahrenheit&wind_speed_unit=mph')
         h = data['hourly']
+        src = _reported_offset(data)
         return {
             'index': {_utc_key(datetime.datetime.fromisoformat(t).replace(tzinfo=src)): i
                       for i, t in enumerate(h['time'])},

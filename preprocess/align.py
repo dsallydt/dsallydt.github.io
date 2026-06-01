@@ -33,7 +33,6 @@ recomputed — that's how a manual correction sticks.
 
 import json
 import os
-import subprocess
 
 import cv2
 import numpy as np
@@ -234,26 +233,35 @@ def _rescue(feats, name, anchors):
 # -----------------------------------------------------------------------------
 # Warp + output
 # -----------------------------------------------------------------------------
-def _render(name, matrix, gmat):
-    """Warp the cached photo into the common frame (with the global rotation),
-    mask its content to the largest axis-aligned rectangle inside itself (straight
-    edges, no rotation slant), pad the rest with the background; write web+thumb.
-    Output stays FRAME-sized so all photos still stack."""
+def _render(name, matrix, gmat, thumb_crop=None):
+    """Warp the cached photo into the common frame, then write two crops:
+
+    web/   the full frame, with this photo's content masked to the largest
+           axis-aligned rectangle inside itself (straight edges, no rotation
+           slant) and the rest padded with the background. Stays FRAME-sized so
+           the centred top image lines up across photos.
+    thumb/ cropped to `thumb_crop` — the rectangle EVERY photo covers (see
+           _intersection_rect) — so the grid shows one uniform slice of the scene
+           with no mismatched background edges. Defaults to the full frame.
+    """
     img = cv2.imread(os.path.join(CACHE_WEB, name))
     mf = np.float32(_compose(gmat, np.float32(matrix)))
     warped = cv2.warpAffine(
         img, mf, (FRAME_W, FRAME_H),
         flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_CONSTANT,
         borderValue=BORDER_BGR)
-    content = cv2.warpAffine(
-        np.full(img.shape[:2], 255, np.uint8), mf, (FRAME_W, FRAME_H),
-        flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+    content = _warp_mask(img.shape[:2], mf)
     x0, y0, x1, y1 = _inscribed_rect(content)
     out = np.full((FRAME_H, FRAME_W, 3), BORDER_BGR, np.uint8)
     out[y0:y1, x0:x1] = warped[y0:y1, x0:x1]
     cv2.imwrite(os.path.join(WEB_DIR, name), out,
                 [cv2.IMWRITE_JPEG_QUALITY, WEB_QUALITY])
-    th = cv2.resize(out, (THUMB_MAX, round(FRAME_H * THUMB_MAX / FRAME_W)),
+
+    # Thumb: crop the raw warp to the shared intersection (all content there, so
+    # no padding shows). Same crop for every photo => identical thumb dimensions.
+    cx0, cy0, cx1, cy1 = thumb_crop or (0, 0, FRAME_W, FRAME_H)
+    crop = warped[cy0:cy1, cx0:cx1]
+    th = cv2.resize(crop, (THUMB_MAX, round(crop.shape[0] * THUMB_MAX / crop.shape[1])),
                     interpolation=cv2.INTER_AREA)
     cv2.imwrite(os.path.join(THUMB_DIR, name), th,
                 [cv2.IMWRITE_JPEG_QUALITY, THUMB_QUALITY])
@@ -293,6 +301,39 @@ def _largest_rect(mask):
                 start = idx
             stack.append((start, cur))
     return best[1], best[2], best[3], best[4]
+
+
+def _warp_mask(shape, mf):
+    """Warp a white silhouette of a `shape`-sized image by `mf` into the frame.
+    255 where the photo lands, 0 in the padding."""
+    return cv2.warpAffine(
+        np.full(shape, 255, np.uint8), mf, (FRAME_W, FRAME_H),
+        flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+
+
+def _content_mask(name, matrix, gmat):
+    """The in-frame silhouette of photo `name` (255 where it lands)."""
+    img = cv2.imread(os.path.join(CACHE_WEB, name))
+    mf = np.float32(_compose(gmat, np.float32(matrix)))
+    return _warp_mask(img.shape[:2], mf)
+
+
+def _intersection_rect(results, gmat):
+    """Largest axis-aligned rectangle (full-res frame px) that EVERY photo covers.
+
+    Thumbnails are cropped to this shared window so the grid shows one uniform
+    slice of the aligned scene — same dimensions, no mismatched background edges.
+    Decodes each photo once; call only when a (re)render is already happening.
+    """
+    inter = None
+    for name in results:
+        if not os.path.exists(os.path.join(CACHE_WEB, name)):
+            continue
+        mask = _content_mask(name, results[name]['matrix'], gmat)
+        inter = mask if inter is None else cv2.bitwise_and(inter, mask)
+    if inter is None:
+        return [0, 0, FRAME_W, FRAME_H]
+    return list(_inscribed_rect(inter))
 
 
 # -----------------------------------------------------------------------------
@@ -409,17 +450,27 @@ def add_alignment(entries: list[dict]) -> None:
     # background colour where it doesn't reach.
     gmat = _rotate_about(LEVEL_PIVOT, GLOBAL_ROTATE_DEG)
     out['global_rotate_deg'] = GLOBAL_ROTATE_DEG
+
+    # Thumbnails are cropped to the rectangle every photo covers (the web image
+    # keeps its own per-photo framing). It depends on the whole set, so recompute
+    # it whenever transforms or framing changed — and a change re-renders every
+    # thumb. Reusing the stored crop keeps a no-op rerun from decoding photos.
+    framing_changed = (store.get('global_rotate_deg') != GLOBAL_ROTATE_DEG
+                       or store.get('night_level_adjust_deg') != NIGHT_LEVEL_ADJUST_DEG)
+    prev_crop = store.get('thumb_crop')
+    thumb_crop = (_intersection_rect(results, gmat)
+                  if computed or framing_changed or prev_crop is None else prev_crop)
+    out['thumb_crop'] = thumb_crop
     _save_store(out)
 
-    # Re-render everything if the framing changed; otherwise only what's stale.
-    reframed = (store.get('global_rotate_deg') != GLOBAL_ROTATE_DEG
-                or store.get('night_level_adjust_deg') != NIGHT_LEVEL_ADJUST_DEG)
+    # Re-render everything if the framing or shared crop changed; else only stale.
+    reframed = framing_changed or thumb_crop != prev_crop
     rendered = 0
     for name in names:
         if name not in results:
             continue
         if reframed or name in computed or not _output_fresh(name):
-            _render(name, results[name]['matrix'], gmat)
+            _render(name, results[name]['matrix'], gmat, thumb_crop)
             rendered += 1
 
     for e in entries:

@@ -66,9 +66,9 @@ def _solve_and_write(name, src_pts, dst_pts):
         'locked': True,
     }
     _save_store(store)
-    # Render with the same global rotation the last build used.
+    # Render with the same global rotation and shared thumb crop the last build used.
     gmat = _rotate_about(LEVEL_PIVOT, store.get('global_rotate_deg', 0.0))
-    _render(name, M.tolist(), gmat)
+    _render(name, M.tolist(), gmat, store.get('thumb_crop'))
     print(f'locked {name} in {ALIGN_JSON} and re-rendered it. '
           f'It will survive future builds.')
 

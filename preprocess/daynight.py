@@ -15,11 +15,10 @@ zoneinfo, which applies the correct DST for each date.
 import datetime
 import json
 import os
-import subprocess
 import sys
 from zoneinfo import ZoneInfo
 
-from preprocess.weather import LATITUDE, LONGITUDE, TIMEZONE
+from preprocess.weather import TIMEZONE, _fetch_archive, _reported_offset
 
 TZ = ZoneInfo(TIMEZONE)
 NIGHT_BUFFER = datetime.timedelta(minutes=30)  # after sunset / before sunrise
@@ -56,20 +55,9 @@ def _sun_times(start: str, end: str) -> dict:
     then re-anchor each time to the offset Open-Meteo actually reported and
     convert with zoneinfo to the DST-correct wall-clock.
     """
-    url = (
-        'https://archive-api.open-meteo.com/v1/archive'
-        f'?latitude={LATITUDE}&longitude={LONGITUDE}'
-        f'&start_date={start}&end_date={end}'
-        '&daily=sunrise,sunset'
-        f'&timezone={TIMEZONE}'
-    )
     try:
-        raw = subprocess.run(
-            ['curl', '-fsSL', '--max-time', '30', url],
-            capture_output=True, check=True,
-        ).stdout
-        data = json.loads(raw)
-        src = datetime.timezone(datetime.timedelta(seconds=data['utc_offset_seconds']))
+        data = _fetch_archive(start, end, 'daily=sunrise,sunset')
+        src = _reported_offset(data)
         daily = data['daily']
         return {date: (_to_local(sr, src), _to_local(ss, src))
                 for date, sr, ss in zip(daily['time'], daily['sunrise'], daily['sunset'])}
