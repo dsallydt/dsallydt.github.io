@@ -848,7 +848,7 @@
     "wind_mph": 4.7,
     "wind_dir": 312,
     "weather": "57\u00b0F \u00b7 Mostly clear \u00b7 5 mph NW",
-    "caption": "I'm not a morning person, so this 6am photo is a rarity. The soft morning light makes this photo one of my favourites in the whole collection.",
+    "caption": "I'm not a morning person, so this 6am photo is a rarity. The soft light makes this photo one of my favourites in the whole collection.",
     "is_night": false,
     "aligned": true
   },
@@ -871,6 +871,85 @@
     "wind_mph": 9.6,
     "wind_dir": 142,
     "weather": "60\u00b0F \u00b7 Overcast \u00b7 10 mph SE",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-30T23:27:08",
+    "file": "IMG_7784.jpg",
+    "temp_f": 45.8,
+    "code": 1,
+    "wind_mph": 4.9,
+    "wind_dir": 328,
+    "weather": "46\u00b0F \u00b7 Mostly clear \u00b7 5 mph NW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-05-31T23:32:01",
+    "file": "IMG_7787.jpg",
+    "temp_f": 53.6,
+    "code": 3,
+    "wind_mph": 7.2,
+    "wind_dir": 241,
+    "weather": "54\u00b0F \u00b7 Overcast \u00b7 7 mph SW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-06-01T18:47:30",
+    "file": "IMG_7793.jpg",
+    "temp_f": 57.4,
+    "code": 0,
+    "wind_mph": 4.0,
+    "wind_dir": 112,
+    "weather": "57\u00b0F \u00b7 Clear \u00b7 4 mph E",
+    "caption": "The sailboats at Community Boating got brand new hot pink sails.",
+    "is_night": false,
+    "aligned": true
+  },
+  {
+    "date": "2026-06-02T01:16:08",
+    "file": "IMG_7795.jpg",
+    "temp_f": 49.3,
+    "code": 0,
+    "wind_mph": 6.0,
+    "wind_dir": 244,
+    "weather": "49\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "caption": "The Prudential Center is lit up in celebration of the start of Pride month.",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-06-02T23:58:11",
+    "file": "IMG_7798.jpg",
+    "temp_f": 60.3,
+    "code": 0,
+    "wind_mph": 2.4,
+    "wind_dir": 357,
+    "weather": "60\u00b0F \u00b7 Clear \u00b7 calm",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-06-03T23:56:46",
+    "file": "IMG_7800.jpg",
+    "temp_f": 65.3,
+    "code": 0,
+    "wind_mph": 11.2,
+    "wind_dir": 215,
+    "weather": "65\u00b0F \u00b7 Clear \u00b7 11 mph SW",
+    "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-06-04T23:25:11",
+    "file": "IMG_7806.jpg",
+    "temp_f": 69.8,
+    "code": 1,
+    "wind_mph": 7.7,
+    "wind_dir": 230,
+    "weather": "70\u00b0F \u00b7 Mostly clear \u00b7 8 mph SW",
     "is_night": true,
     "aligned": true
   }
