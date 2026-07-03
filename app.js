@@ -14,6 +14,7 @@
   const grid = document.getElementById('grid');
   const prev = document.getElementById('prev');
   const next = document.getElementById('next');
+  const playpause = document.getElementById('playpause');
 
   // Carousel: lazy-build slide elements; only show one at a time.
   const slides = photos.map((p, i) => {
@@ -33,6 +34,22 @@
     return date + ' · ' + time;
   }
 
+  const AUTOPLAY_MS = 4000;
+  let autoplayTimer = null;
+  let playing = true;
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    if (playing) autoplayTimer = setInterval(() => show(idx + 1), AUTOPLAY_MS);
+  }
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7.5" y="5.5" width="3.5" height="13" rx="1"/><rect x="13" y="5.5" width="3.5" height="13" rx="1"/></svg>';
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  function setPlaying(p) {
+    playing = p;
+    playpause.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+    playpause.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
+    resetAutoplay();
+  }
+
   let idx = 0;
   function show(i) {
     idx = (i + photos.length) % photos.length;
@@ -45,6 +62,7 @@
     });
     renderCaption(photos[idx]);
     counter.textContent = (idx + 1) + ' / ' + photos.length;
+    resetAutoplay(); // fresh interval after every change, manual or automatic
   }
 
   function renderCaption(p) {
@@ -67,6 +85,7 @@
 
   prev.addEventListener('click', () => show(idx - 1));
   next.addEventListener('click', () => show(idx + 1));
+  playpause.addEventListener('click', () => setPlaying(!playing));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
