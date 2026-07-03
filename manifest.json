@@ -897,6 +897,18 @@
     "aligned": true
   },
   {
+    "date": "2026-06-02T01:16:08",
+    "file": "IMG_7795.jpg",
+    "temp_f": 49.3,
+    "code": 0,
+    "wind_mph": 6.0,
+    "wind_dir": 244,
+    "weather": "49\u00b0F \u00b7 Clear \u00b7 6 mph SW",
+    "caption": "The Prudential Center is lit up in celebration of the start of Pride month. (The rainbow colors are a bit blown out on my camera.)",
+    "is_night": true,
+    "aligned": true
+  },
+  {
     "date": "2026-06-02T23:58:11",
     "file": "IMG_7798.jpg",
     "temp_f": 60.3,
@@ -1161,18 +1173,6 @@
     "weather": "84\u00b0F \u00b7 Clear \u00b7 8 mph W",
     "caption": "Barge setting up for the fireworks on the Fourth of July!",
     "is_night": true,
-    "aligned": true
-  },
-  {
-    "date": "2026-07-03T11:41:11",
-    "file": "IMG_7795.jpg",
-    "temp_f": 92.8,
-    "code": 0,
-    "wind_mph": 7.5,
-    "wind_dir": 293,
-    "weather": "93\u00b0F \u00b7 Clear \u00b7 8 mph NW",
-    "caption": "The Prudential Center is lit up in celebration of the start of Pride month. (The rainbow colors are a bit blown out on my camera.)",
-    "is_night": false,
     "aligned": true
   }
 ]
