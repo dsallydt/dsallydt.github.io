@@ -43,6 +43,11 @@ queue** and the site keeps serving the old version — pushing again doesn't hel
 because the new builds just queue up behind the stuck one. This is a GitHub-side
 hiccup, not a problem with the repo.
 
+The repo carries an empty **`.nojekyll`** file at the root so Pages skips its
+Jekyll build step and just publishes the files as-is (this site is plain static —
+no Jekyll features). That step is exactly what used to fail intermittently with an
+opaque `Page build failed`, so leave `.nojekyll` in place.
+
 Check the latest build (needs the [`gh`](https://cli.github.com/) CLI):
 
 ```
@@ -69,6 +74,10 @@ Wait ~40–60s, re-check with the command above, and it should read `built`. If 
    if the platform is degraded, just wait it out.
 2. Toggle the Pages source in the repo's **Settings → Pages** (switch the source
    branch away from `main` and back) to re-provision the build pipeline.
+3. If deploys keep flaking, switch off the legacy pipeline entirely: deploy via a
+   **GitHub Actions** workflow (Settings → Pages → Build and deployment → Source →
+   GitHub Actions, using the official static-site workflow). It bypasses the
+   legacy builder and gives real build logs instead of `Page build failed`.
 
 ## What `build.py` does
 
