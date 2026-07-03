@@ -76,9 +76,17 @@ header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 200ms ease;
+  z-index: 1;
+  /* Outgoing photo: stay fully opaque underneath, then snap away only after the
+     incoming one has finished fading in over it — a gapless crossfade (no dip to
+     the stage background mid-transition). */
+  transition: opacity 0s linear 600ms;
 }
-.stage img.active { opacity: 1; }
+.stage img.active {
+  opacity: 1;
+  z-index: 2;                              /* incoming sits on top... */
+  transition: opacity 600ms ease-in-out;  /* ...and fades in smoothly */
+}
 
 /* Carousel controls: one centered cluster below the image */
 .controls {
