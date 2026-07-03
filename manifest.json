@@ -1,17 +1,5 @@
 [
   {
-    "date": "2025-10-14T22:30:14",
-    "file": "IMG_6286.jpg",
-    "temp_f": 55.4,
-    "code": 51,
-    "wind_mph": 3.2,
-    "wind_dir": 348,
-    "weather": "55\u00b0F \u00b7 Light drizzle \u00b7 calm",
-    "caption": "The first photo I took on the bridge, before I knew I wanted to start this project.",
-    "is_night": true,
-    "aligned": true
-  },
-  {
     "date": "2026-01-07T20:23:35",
     "file": "IMG_6823.jpg",
     "temp_f": 34.1,
@@ -909,18 +897,6 @@
     "aligned": true
   },
   {
-    "date": "2026-06-02T01:16:08",
-    "file": "IMG_7795.jpg",
-    "temp_f": 49.3,
-    "code": 0,
-    "wind_mph": 6.0,
-    "wind_dir": 244,
-    "weather": "49\u00b0F \u00b7 Clear \u00b7 6 mph SW",
-    "caption": "The Prudential Center is lit up in celebration of the start of Pride month.",
-    "is_night": true,
-    "aligned": true
-  },
-  {
     "date": "2026-06-02T23:58:11",
     "file": "IMG_7798.jpg",
     "temp_f": 60.3,
@@ -994,6 +970,7 @@
     "wind_mph": 6.6,
     "wind_dir": 204,
     "weather": "74\u00b0F \u00b7 Mostly clear \u00b7 7 mph SW",
+    "caption": "A proper golden hour!",
     "is_night": false,
     "aligned": true
   },
@@ -1126,6 +1103,7 @@
     "wind_mph": 4.7,
     "wind_dir": 215,
     "weather": "67\u00b0F \u00b7 Clear \u00b7 5 mph SW",
+    "caption": "Spot the sailboats! Community Boating ran a 24 hour sail-a-thon: those boats were going all night!",
     "is_night": true,
     "aligned": true
   },
@@ -1176,12 +1154,25 @@
   {
     "date": "2026-07-03T00:15:29",
     "file": "IMG_8135.jpg",
-    "temp_f": 83.5,
+    "temp_f": 84.1,
     "code": 0,
     "wind_mph": 8.3,
-    "wind_dir": 247,
-    "weather": "84\u00b0F \u00b7 Clear \u00b7 8 mph SW",
+    "wind_dir": 250,
+    "weather": "84\u00b0F \u00b7 Clear \u00b7 8 mph W",
+    "caption": "Barge setting up for the fireworks on the Fourth of July!",
     "is_night": true,
+    "aligned": true
+  },
+  {
+    "date": "2026-07-03T11:41:11",
+    "file": "IMG_7795.jpg",
+    "temp_f": 92.8,
+    "code": 0,
+    "wind_mph": 7.5,
+    "wind_dir": 293,
+    "weather": "93\u00b0F \u00b7 Clear \u00b7 8 mph NW",
+    "caption": "The Prudential Center is lit up in celebration of the start of Pride month. (The rainbow colors are a bit blown out on my camera.)",
+    "is_night": false,
     "aligned": true
   }
 ]

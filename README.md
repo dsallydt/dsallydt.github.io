@@ -35,6 +35,41 @@ Some days you might want to note something special. Edit `captions.json` and add
 
 Re-run `./build.py` and the caption appears below the date/weather line in italic. Photos without an entry get no caption (the default).
 
+## When a push doesn't go live (stuck Pages build)
+
+Every push triggers a GitHub Pages build that redeploys the site. Normally it
+finishes in under a minute. Occasionally the build gets **wedged in GitHub's
+queue** and the site keeps serving the old version — pushing again doesn't help,
+because the new builds just queue up behind the stuck one. This is a GitHub-side
+hiccup, not a problem with the repo.
+
+Check the latest build (needs the [`gh`](https://cli.github.com/) CLI):
+
+```
+gh api repos/dsallydt/dsallydt.github.io/pages/builds/latest \
+  --jq '{status, duration, created_at, updated_at, error: .error.message}'
+```
+
+- **Healthy:** `status` ends up `built` with a nonzero `duration` (~40–60s) — it
+  actually ran.
+- **Stuck:** `status` sits at `building` with `duration: 0` and `updated_at`
+  equal to `created_at` — it never even started; it's wedged in the queue.
+
+**The fix** — request an explicit rebuild, which dislodges the queue so the next
+build runs normally:
+
+```
+gh api -X POST repos/dsallydt/dsallydt.github.io/pages/builds
+```
+
+Wait ~40–60s, re-check with the command above, and it should read `built`. If it
+*still* sits at `duration: 0` after a few minutes:
+
+1. Check [githubstatus.com](https://www.githubstatus.com/) for a Pages incident —
+   if the platform is degraded, just wait it out.
+2. Toggle the Pages source in the repo's **Settings → Pages** (switch the source
+   branch away from `main` and back) to re-provision the build pipeline.
+
 ## What `build.py` does
 
 `build.py` is a thin orchestrator that runs each step in `preprocess/`:
