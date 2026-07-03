@@ -96,11 +96,34 @@ header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
   place-items: center;
   color: #222;
   transition: background 150ms;
+  touch-action: manipulation; /* no double-tap-to-zoom; fast repeat taps */
 }
 .nav:hover { background: #fff; }
 .nav.prev { left: 12px; }
 .nav.next { right: 12px; }
 .nav:disabled { opacity: 0.3; cursor: default; }
+
+/* Play/pause toggle (bottom-left of the stage) */
+.playpause {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #222;
+  transition: background 150ms;
+  touch-action: manipulation; /* no double-tap-to-zoom */
+}
+.playpause:hover { background: #fff; }
 
 .caption {
   text-align: center;
@@ -153,6 +176,7 @@ header p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
   cursor: pointer;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  touch-action: manipulation; /* no double-tap-to-zoom on thumbnails */
 }
 .grid img {
   width: 100%;
